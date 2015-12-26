@@ -11,12 +11,15 @@
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <script type="text/javascript">
+    I18n.defaultLocale = "<%= I18n.default_locale %>";
+    I18n.locale = "<%= I18n.locale %>";
+  </script>
 </head>
+
 <body>
-
-<%= render partial: "layouts/header" %>
-<%= yield %>
-<%= render partial: "layouts/footer" %>
-
+  <%= render partial: "layouts/header" %>
+  <%= yield %>
+  <%= render partial: "layouts/footer" %>
 </body>
 </html>

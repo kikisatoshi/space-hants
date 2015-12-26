@@ -1,0 +1,15 @@
+<div class="box">
+  <h2 class="box-title">パスワードをリセットする</h2>
+  <div class="box-inner">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="form-group">
+        <%= f.text_field :email, class: "form-control", autofocus: true, placeholder: "メールアドレス" %>
+      </div>
+      <div class="submit-group">
+        <%= f.submit "リクエスト送信", class: "btn btn-success" %>
+      </div>
+      <%= render "devise/shared/links" %>
+    <% end %>
+  </div>
+</div>
