@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @space.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @space.description %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @space.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @space.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @space.longitude %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @space.category %>
+</p>
+
+<%= link_to 'Edit', edit_space_path(@space) %> |
+<%= link_to 'Back', spaces_path %>

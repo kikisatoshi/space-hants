@@ -36,6 +36,12 @@ gem 'dynamic_form'
 gem "i18n-js"
 # Devise
 gem 'devise'
+gem 'devise-bootstrap-views'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+# GoogleMap
+gem "gmaps4rails"
+gem "geocoder"
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
+  before_action :authenticate_user!
+
+  def index
+    redirect_to root_url
   end
 end
