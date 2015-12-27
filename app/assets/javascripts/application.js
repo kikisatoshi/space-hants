@@ -16,3 +16,5 @@
 //= require turbolinks
 //= require_tree .
 //= require i18n
+//= require underscore
+//= require gmaps/google

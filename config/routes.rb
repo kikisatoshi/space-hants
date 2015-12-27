@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  resources :spaces
   root 'welcome#index'
   devise_for :users
 
   resources :users, only: [:index]
+  resources :map, only: [:index]
+  resources :spaces
 
+  scope '(:locale)', locale: /en/ do
+    resources :posts, param: :slug
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

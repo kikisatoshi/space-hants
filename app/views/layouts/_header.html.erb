@@ -21,7 +21,7 @@
               <li><%= link_to "ログイン", new_user_session_path %></li>
             <% else %>
               <li>
-                <%= link_to '#' do %>
+                <%= link_to map_index_path do %>
                   <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                   地図
                 <% end %>
