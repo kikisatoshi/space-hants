@@ -8,12 +8,13 @@
   <div class="container-inner inner-default clearfix">
     <div class="map-box">
       <div class="detail">
-        <form>
-        	<label for="latitude">緯度</label>
-        	<input type="text" id="latitude" size="20" />
-        	<label for="longitude">経度</label>
-        	<input type="text" id="longitude" size="20" />
-        </form>
+      	<div class="title" id="result"></div>
+        <!--<form>-->
+        <!--	<label for="latitude">緯度</label>-->
+        <!--	<input type="text" id="latitude" size="20" />-->
+        <!--	<label for="longitude">経度</label>-->
+        <!--	<input type="text" id="longitude" size="20" />-->
+        <!--</form>-->
       </div>
       <div class="map-image">
         <div class="map-wrap">
@@ -34,6 +35,7 @@
           lat = pos.coords.latitude;
           lon = pos.coords.longitude;
       		marker.setPosition(new google.maps.LatLng(lat, lon));
+      		getAdrs(lat, lon);
   		  }
   		);
   	}
@@ -49,12 +51,31 @@
 	var marker = new google.maps.Marker({
   	position: new google.maps.LatLng(lat, lon),
   	title: "現在地",
-    infowindow: "現在地",
+    infowindow: "右のフォームを入力してHant",
   	draggable: true,
 		map: handler.getMap(),
+		icon:{
+		  url: "http://googlemaps.googlermania.com/img/google-marker-big.png",
+      scaledSize: new google.maps.Size( 23 , 42 )
+		}
 	});
 	google.maps.event.addListener( marker, 'dragend', function(ev){
-		document.getElementById('latitude').value = ev.latLng.lat();
-		document.getElementById('longitude').value = ev.latLng.lng();
+		// document.getElementById('latitude').value = ev.latLng.lat();
+		// document.getElementById('longitude').value = ev.latLng.lng();
+		getAdrs(ev.latLng.lat(), ev.latLng.lng());
 	});
+  function getAdrs(lat, lon){
+    var ll = new google.maps.LatLng(lat, lon);
+    var gc = new google.maps.Geocoder();
+    gc.geocode({ location : ll }, function(results, status){
+      if (status == google.maps.GeocoderStatus.OK) {
+        var adrsData = results[0].address_components;
+        var txt = "";
+        for(var i=0; i<adrsData.length; i++){
+          txt = adrsData[i].long_name +' '+txt;
+        }
+        document.getElementById("result").innerHTML = txt;
+      }
+    });
+  }
 </script>

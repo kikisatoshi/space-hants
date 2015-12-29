@@ -10,11 +10,4 @@ class MapController < ApplicationController
       marker.json({title: space.title})
     end
   end
-
-  def search
-    render 'hant'
-  end
-
-  def hant
-  end
 end
