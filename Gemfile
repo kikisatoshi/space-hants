@@ -42,6 +42,7 @@ gem 'devise-i18n-views'
 # GoogleMap
 gem "gmaps4rails"
 gem "geocoder"
+gem 'google_places'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

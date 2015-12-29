@@ -1,0 +1,129 @@
+<% content_for :head do %>
+  <title>Map - SpaceHants</title>
+  <meta name="description" content="SpaceHantsの地図表示です。ユーザーがHantした場所を表示しています。">
+  <meta name="keywords" content="SpaceHants,Map">
+<% end %>
+
+<div class="container">
+  <div class="container-inner inner-default clearfix">
+    <div class="map-box">
+      <div class="detail">
+        <form>
+        	<label for="latitude">緯度</label>
+        	<input type="text" id="latitude" size="20" />
+        	<label for="longitude">経度</label>
+        	<input type="text" id="longitude" size="20" />
+        </form>
+      </div>
+      <div class="map-image">
+        <div class="map-wrap">
+          <div id="map" style='width: 800px; height: 600px;'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var lat,lon;
+	var nap;
+    if (navigator.geolocation) {
+        // 現在の位置情報取得を実施
+        navigator.geolocation.getCurrentPosition(
+       // 位置情報取得成功時
+       function (pos) { 
+                var location ="<li>"+"緯度：" + pos.coords.latitude + "</li>";
+                location += "<li>"+"経度：" + pos.coords.longitude + "</li>";
+                lat = pos.coords.latitude;
+                lon = pos.coords.longitude;
+                setMarker(lat, lon);
+       },
+       // 位置情報取得失敗時
+       function (error) {
+            var message = "";
+            switch (error.code) {
+               // 位置情報取得できない場合
+              case error.POSITION_UNAVAILABLE:
+                   message = "位置情報の取得ができませんでした。";
+                    break;
+             // Geolocation使用許可されない場合
+             case error.PERMISSION_DENIED:
+                   message = "位置情報取得の使用許可がされませんでした。";
+                   break;
+			  		// タイムアウトした場合 
+			  		case error.PERMISSION_DENIED_TIMEOUT:
+			      	message = "位置情報取得中にタイムアウトしました。";
+			        break;
+			}
+			window.alert(message);
+		});
+	} else {
+		window.alert("本ブラウザではGeolocationが使えません");
+	}
+  // 地図を表示
+	map = new google.maps.Map(document.getElementById("map"),{
+  　　//地図の縮尺
+			zoom : 17,
+　　　//地図の中心の座標
+			center : new google.maps.LatLng(35.681382, 139.766084),
+　　　//地図の種類(市街地図や航空写真などといった形式)
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		}
+	);
+	// マーカーを表示
+	marker = new google.maps.Marker({
+		position: new google.maps.LatLng(35.681382, 139.766084),
+		title: "現在地",
+    infowindow: "現在地",
+		map: map
+	});
+	// 地図上に現在地を表示
+	function setMarker(lat, lon){
+		var pos = new google.maps.LatLng(lat, lon);
+		map.setCenter(pos);
+		marker.setPosition(pos);
+		marker.setDraggable(true);
+	}
+	// マーカーのドロップ（ドラッグ終了）時のイベント
+	google.maps.event.addListener( marker, 'dragend', function(ev){
+		document.getElementById('latitude').value = ev.latLng.lat();
+		document.getElementById('longitude').value = ev.latLng.lng();
+	});
+});
+
+  // // ページ読み込み完了時に実行する関数
+  // function init() {
+  // 	var current_place = new google.maps.LatLng(35.6585928, 139.7454636);
+  // 	// マップ表示
+  // 	var map = new google.maps.Map(document.getElementById("map"), {
+  // 		center: current_place,
+  // 		zoom:13,
+  // 		mapTypeId: google.maps.MapTypeId.ROADMAP
+  // 	});
+  // 	// ドラッグできるマーカーを表示
+  // 	var marker = new google.maps.Marker({
+  // 		position: current_place,
+  // 		title: "現在地",
+  //     infowindow: "現在地",
+  // 		draggable: true
+  // 	});
+  // 	marker.setMap(map)	;
+  // 	// マーカーのドロップ（ドラッグ終了）時のイベント
+  // 	google.maps.event.addListener( marker, 'dragend', function(ev){
+  // 		document.getElementById('latitude').value = ev.latLng.lat();
+  // 		document.getElementById('longitude').value = ev.latLng.lng();
+  // 	});
+  // }
+  // // ONLOADイベントにセット
+  // window.onload = init();
+</script>

@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations'
+  }
 
   resources :users, only: [:index]
-  resources :map, only: [:index]
+  resources :map, only: [:index] do
+    collection do
+      get :search
+    end
+  end
   resources :spaces
 
   scope '(:locale)', locale: /en/ do

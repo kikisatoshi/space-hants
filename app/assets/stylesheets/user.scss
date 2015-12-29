@@ -63,5 +63,10 @@
   }
   .box-inner {
     padding: 20px;
+    .checkbox.label {
+      padding: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
   }
 }

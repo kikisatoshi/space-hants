@@ -13,7 +13,7 @@
         <% minimum_password_length = @minimum_password_length %>
         <%= f.password_field :password, class: "form-control",
             placeholder: t('.password', :resource => minimum_password_length,
-            :default => "Password(more than #{minimum_password_length} characters)") %>
+            :default => "Password (more than #{minimum_password_length} characters)") %>
       </div>
       <div class="form-group">
         <%= f.password_field :password_confirmation, class: "form-control",

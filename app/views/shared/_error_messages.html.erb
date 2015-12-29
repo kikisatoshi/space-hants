@@ -1,7 +1,11 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      <%= object.errors.count %>個のエラーがあります。
+      <% if locale == :ja %>
+        <%= object.errors.count %>個のエラーがあります。
+      <% elsif  locale == :en %>
+        The form contains <%= pluralize(object.errors.count, "error") %>
+      <% end %>
     </div>
     <ul>
     <% object.errors.full_messages.each do |msg| %>

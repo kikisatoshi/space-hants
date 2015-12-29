@@ -12,6 +12,12 @@ class SpacesController < ApplicationController
   def show
   end
 
+  def list
+    keyword = params[:search]
+    @client = GooglePlaces::Client.new( ENV['GOOGLE_API_KEY'] )
+    @spaces = @client.spots_by_query( keyword )
+  end
+
   # GET /spaces/new
   def new
     @space = Space.new
