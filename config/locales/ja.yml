@@ -225,8 +225,6 @@ ja:
       following: フォロー
       follower: フォロワー
     attributes:
-      micropost:
-        content: ハント内容
       user:
         name: 名前
         email: メールアドレス
@@ -234,3 +232,5 @@ ja:
         profile: プロフィール
         password: パスワード
         password_confirmation: 確認用パスワード
+      space:
+        category: カテゴリー

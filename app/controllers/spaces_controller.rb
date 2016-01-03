@@ -1,10 +1,12 @@
 class SpacesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_space, only: [:show, :edit, :update, :destroy]
 
   # GET /spaces
   # GET /spaces.json
   def index
     @spaces = Space.all
+    # redirect_to "/map"
   end
 
   # GET /spaces/1
@@ -20,6 +22,13 @@ class SpacesController < ApplicationController
 
   # GET /spaces/new
   def new
+    @spaces = Space.all
+    @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
+      marker.lat space.latitude
+      marker.lng space.longitude
+      marker.infowindow space.description
+      marker.json({title: space.title})
+    end
     @space = Space.new
   end
 
@@ -37,6 +46,13 @@ class SpacesController < ApplicationController
         format.html { redirect_to @space, notice: 'Space was successfully created.' }
         format.json { render :show, status: :created, location: @space }
       else
+        @spaces = Space.all
+        @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
+          marker.lat space.latitude
+          marker.lng space.longitude
+          marker.infowindow space.description
+          marker.json({title: space.title})
+        end
         format.html { render :new }
         format.json { render json: @space.errors, status: :unprocessable_entity }
       end

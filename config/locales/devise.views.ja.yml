@@ -62,7 +62,7 @@ ja:
         do_sign_up: "登録する"
         name: "お名前"
         email: "メールアドレス"
-        password: "パスワード（%{resource}文字以上）"
+        password: "パスワード（半角英数字%{min}～%{max}文字）"
         password_confirmation: "パスワードの再入力"
     sessions:
       new:

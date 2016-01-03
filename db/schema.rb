@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151226235932) do
+ActiveRecord::Schema.define(version: 20160103074609) do
+
+  create_table "hanterships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "hant_id"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "hanterships", ["hant_id"], name: "index_hanterships_on_hant_id"
+  add_index "hanterships", ["user_id", "hant_id", "type"], name: "index_hanterships_on_user_id_and_hant_id_and_type", unique: true
+  add_index "hanterships", ["user_id"], name: "index_hanterships_on_user_id"
+
+  create_table "hants", force: :cascade do |t|
+    t.string   "one_phrase"
+    t.string   "content"
+    t.integer  "study_evaluation"
+    t.integer  "pc_evaluation"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "spaces", force: :cascade do |t|
     t.string   "title"
