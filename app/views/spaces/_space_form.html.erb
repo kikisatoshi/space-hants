@@ -1,36 +1,39 @@
 <div class="spacebox">
-  <h2 class="spacebox-title">スペース情報を入力</h2>
+  <h2 class="spacebox-title"><%= t('.space_form', :default => "Space Information") %></h2>
   <div class="spacebox-inner">
     <%= form_for(@space) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="form-group">
+        <%= f.label t('.address', :default => "Address"), id: "adrsLabel" %>
         <%= f.text_area :address, class: "form-control", readonly: true %>
       </div>
       <div class="form-group">
-        <%= f.text_field :title, class: "form-control",
-            placeholder: t('.title', :default => "Title") %>
+        <%= f.label t('.latitude', :default => "Latitude") %>
+        <%= f.text_field :latitude, class: "form-control", readonly: true %>
       </div>
       <div class="form-group">
-        <%= f.text_area :description, class: "form-control",
-            placeholder: t('.description', :default => "Description") %>
+        <%= f.label t('.longitude', :default => "Longitude") %>
+        <%= f.text_field :longitude, class: "form-control", readonly: true %>
       </div>
-      <div class="radio">
-        <%= t('.category', :default => "Category") %><br>
-        <label>
-          <%= f.radio_button(:category, "cafe") %>
-          <%= f.label :category, 'カフェ', :value => "cafe" %>
-        </label><br>
-        <label>
-          <%= f.radio_button(:category, "library") %>
-          <%= f.label :category, '図書館', :value => "library" %>
-        </label><br>
-        <label>
-          <%= f.radio_button(:category, "original") %>
-          <%= f.label :category, 'オリジナルスペース', :value => "original" %>
-        </label><br>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control",
+            placeholder: t('.title', :default => "Title"),
+            autocomplete: "off" %>
       </div>
+      <div class="form-group">
+        <%= f.label :description, "URL" %>
+        <%= f.text_field :description, class: "form-control",
+            placeholder: t('.description', :default => "URL"),
+            autocomplete: "off" %>
+      </div>
+      <%= f.label :category %>&nbsp;&nbsp;
+      <%= f.select :category, [[t('.cafe', :default => "Cafe"), "cafe"],
+          [t('.library', :default => "Library"), "library"],
+          [t('.original', :default => "Original Space(Others)"), "original"]] %>
       <div class="submit-group">
-        <%= f.submit t('.spacehant', :default => "Hant this space"), class: "btn btn-success" %>
+        <%= f.submit t('.create_space', :default => "Create this space"), 
+        class: "btn btn-success", data: { disable_with: t('.creating', :default => "Now Creating")} %>
       </div>
     <% end %>
   </div>

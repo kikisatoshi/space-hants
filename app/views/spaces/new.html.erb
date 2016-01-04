@@ -26,17 +26,36 @@
   </section>
 </div>
 
+<div class='modal fade' id='hantModal' tabindex='-1'>
+	<div class='modal-dialog'>
+		<div class='modal-content'>
+			<div class='modal-header'>
+				<button type='button' class='close' data-dismiss='modal'><span>×</span></button>
+				<h4 class='modal-title'>タイトル</h4>
+			</div>
+			<div class='modal-body'>
+				本文
+			</div>
+			<div class='modal-footer'>
+				<button type='button' class='btn btn-default' data-dismiss='modal'>閉じる</button>
+				<button type='button' class='btn btn-primary'>ボタン</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
-  var lat = 35.681382, lon = 139.766084;
+  var lat = 35.681382, lng = 139.766084;
+  var markers;
   $(document).ready(function(){
     if (navigator.geolocation) {
       // 現在の位置情報を取得
       navigator.geolocation.getCurrentPosition(
         function (pos) {
           lat = pos.coords.latitude;
-          lon = pos.coords.longitude;
-      		marker.setPosition(new google.maps.LatLng(lat, lon));
-      		getAdrs(lat, lon);
+          lng = pos.coords.longitude;
+      		marker.setPosition(new google.maps.LatLng(lat, lng));
+      		setAdrs(lat, lng);
   		  }
   		);
   	}
@@ -47,10 +66,16 @@
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
-    handler.getMap().setCenter(new google.maps.LatLng(lat, lon));
+    handler.getMap().setCenter(new google.maps.LatLng(lat, lng));
   });
+  // google.maps.event.addListener(markers, "click", function() {
+  //   var infowindow = new google.maps.InfoWindow({
+  //     content: "<b>マーカー</b>と<i>ウィンドウ</i>のサンプルです"
+  //   });
+  //   infowindow.open(map, marker);
+  // });
 	var marker = new google.maps.Marker({
-  	position: new google.maps.LatLng(lat, lon),
+  	position: new google.maps.LatLng(lat, lng),
   	title: "現在地",
     infowindow: "右のフォームを入力してHant",
   	draggable: true,
@@ -60,23 +85,18 @@
       scaledSize: new google.maps.Size( 23 , 42 )
 		}
 	});
-	google.maps.event.addListener( marker, 'dragend', function(ev){
-		// document.getElementById('latitude').value = ev.latLng.lat();
-		// document.getElementById('longitude').value = ev.latLng.lng();
-		getAdrs(ev.latLng.lat(), ev.latLng.lng());
+	google.maps.event.addListener(marker, 'dragend', function(ev){
+		setAdrs(ev.latLng.lat(), ev.latLng.lng());
 	});
-  function getAdrs(lat, lon){
-    var ll = new google.maps.LatLng(lat, lon);
+  function setAdrs(lat, lng){
+    var ll = new google.maps.LatLng(lat, lng);
     var gc = new google.maps.Geocoder();
     gc.geocode({ location : ll }, function(results, status){
       if (status == google.maps.GeocoderStatus.OK) {
-        var adrsData = results[0].address_components;
-        var txt = "";
-        for(var i=0; i<adrsData.length-1; i++){
-          txt = adrsData[i].long_name+txt;
-        }
-        document.getElementById("space_address").value = txt;
+        document.getElementById("space_address").value = results[0].formatted_address;
       }
     });
+    document.getElementById("space_latitude").value = lat;
+    document.getElementById("space_longitude").value = lng;
   }
 </script>

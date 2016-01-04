@@ -222,8 +222,7 @@ ja:
       hant: ハント
       user: ユーザー
       favorite: お気に入り
-      following: フォロー
-      follower: フォロワー
+      space: スペース
     attributes:
       user:
         name: 名前
@@ -232,5 +231,35 @@ ja:
         profile: プロフィール
         password: パスワード
         password_confirmation: 確認用パスワード
+        space: スペース
+        hant: ハント
       space:
+        title: 名称
+        description: URL
+        address: 住所
         category: カテゴリー
+        latitude: 緯度
+        longitude: 経度
+        user: ユーザー
+        hant: ハント
+  spaces:
+    new:
+      cafe: カフェ
+      library: 図書館
+      original: オリジナルスペース（その他）
+    space_form:
+      address: 住所
+      title: 名称（必須）
+      description: URL（任意）
+      category: カテゴリー
+      latitude: 緯度
+      longitude: 経度
+      create_space: スペースを作成
+      cafe: カフェ
+      library: 図書館
+      original: オリジナルスペース（その他）
+      space_form: スペース情報
+      creating: "作成中..."
+  hants:
+    hant_form:
+      contents: 静かさ，費用，コンセント・Wi-Fiの有無など

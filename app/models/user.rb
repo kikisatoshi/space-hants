@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
 
   has_many :hanterships, foreign_key: "user_id", dependent: :destroy
   has_many :hants, through: :hanterships
+
+  has_many :spaces
 end

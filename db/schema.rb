@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160103074609) do
+ActiveRecord::Schema.define(version: 20160103223823) do
 
   create_table "hanterships", force: :cascade do |t|
     t.integer  "user_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160103074609) do
     t.string   "category"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   add_index "spaces", ["latitude", "longitude"], name: "index_spaces_on_latitude_and_longitude", unique: true

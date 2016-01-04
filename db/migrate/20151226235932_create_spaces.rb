@@ -7,6 +7,7 @@ class CreateSpaces < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.string :category
+      t.integer :user_id
 
       t.timestamps null: false
       t.index [:latitude, :longitude], unique: true

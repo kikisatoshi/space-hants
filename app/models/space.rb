@@ -1,11 +1,17 @@
 class Space < ActiveRecord::Base
-  validates :address, presence: true, uniqueness: true
-  validates :title, length: { maximum: 50 }
-  validates :description, length: { maximum: 160 }
+  validates :address, presence: true
+  validates :title, presence: true, length: { maximum: 50 }
+  validates :description, allow_blank: true,
+            format: /\A#{URI::regexp(%w(http https))}\z/, length: { maximum: 2048 }
   validates :category, presence: true
-  geocoded_by :address
+  validates :latitude, presence: true, uniqueness: { scope: [:longitude] }
+  validates :longitude, presence: true
+  validates :user_id, presence: true
+  # geocoded_by :address
+  # after_validation :geocode
   reverse_geocoded_by :latitude, :longitude
-  after_validation :geocode, :reverse_geocode
+  after_validation :reverse_geocode
 
+  belongs_to :user
   has_many :hants
 end

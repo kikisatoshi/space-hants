@@ -29,7 +29,8 @@
       </div>
       <div class="form-group">
         <%= f.text_field :hometown, class: "form-control",
-            placeholder: t('.hometown', :default => "Hometown") %>
+            placeholder: t('.hometown', :default => "Hometown"),
+            autocomplete: "off" %>
       </div>
       <div class="form-group">
         <%= f.text_area :profile, class: "form-control",
