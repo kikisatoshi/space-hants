@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160103223823) do
+ActiveRecord::Schema.define(version: 20160105212554) do
 
   create_table "hanterships", force: :cascade do |t|
     t.integer  "user_id"
@@ -28,11 +28,15 @@ ActiveRecord::Schema.define(version: 20160103223823) do
   create_table "hants", force: :cascade do |t|
     t.string   "one_phrase"
     t.string   "content"
-    t.integer  "study_evaluation"
-    t.integer  "pc_evaluation"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "study_evaluation", default: 0, null: false
+    t.integer  "pc_evaluation",    default: 0, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "space_id"
+    t.integer  "user_id"
   end
+
+  add_index "hants", ["space_id", "user_id"], name: "index_hants_on_space_id_and_user_id", unique: true
 
   create_table "spaces", force: :cascade do |t|
     t.string   "title"
@@ -61,9 +65,9 @@ ActiveRecord::Schema.define(version: 20160103223823) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name",                   default: "", null: false
     t.string   "profile"
     t.string   "hometown"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

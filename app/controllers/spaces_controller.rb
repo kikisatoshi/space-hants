@@ -12,6 +12,13 @@ class SpacesController < ApplicationController
   # GET /spaces/1
   # GET /spaces/1.json
   def show
+    @hant = current_user.hants.build
+    @hants = Hant.where(space_id: @space.id).order(created_at: :desc)
+    @hash = Gmaps4rails.build_markers(@space) do |space, marker|
+      marker.lat space.latitude
+      marker.lng space.longitude
+      marker.json({title: space.title})
+    end
   end
 
   def list
@@ -42,7 +49,7 @@ class SpacesController < ApplicationController
     @space = current_user.spaces.build(space_params)
     respond_to do |format|
       if @space.save
-        format.html { redirect_to @space, notice: 'スペースが作成されました' }
+        format.html { redirect_to @space, flash:{success: 'スペースが作成されました'} }
         format.json { render :show, status: :created, location: @space }
       else
         @spaces = Space.all
@@ -63,7 +70,7 @@ class SpacesController < ApplicationController
   def update
     respond_to do |format|
       if @space.update(space_params)
-        format.html { redirect_to @space, notice: 'スペースが更新されました' }
+        format.html { redirect_to @space, flash:{success: 'スペースが更新されました'} }
         format.json { render :show, status: :ok, location: @space }
       else
         format.html { render :edit }
@@ -77,7 +84,7 @@ class SpacesController < ApplicationController
   def destroy
     @space.destroy
     respond_to do |format|
-      format.html { redirect_to spaces_url, notice: 'スペースが削除されました' }
+      format.html { redirect_to spaces_url, flash:{success: 'スペースが削除されました'} }
       format.json { head :no_content }
     end
   end

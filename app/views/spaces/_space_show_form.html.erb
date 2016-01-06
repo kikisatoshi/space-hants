@@ -1,0 +1,30 @@
+<div class="spacebox">
+  <h4 class="spacebox-title"><%= @space.title %></h4>
+  <div class="spacebox-inner">
+    <div class="form-group">
+      <strong><%= t(".#{@space.category}") %></strong>
+    </div>
+    <div class="form-group">
+      <label><%= t('.study_evaluation', :default => "Rating for study") %></label>
+      <span id="space_study_rank">&emsp;</span>&emsp;<span id="study_hint"></span>
+    </div>
+    <div class="form-group">
+      <label><%= t('.pc_evaluation', :default => "Rating for study") %></label>
+      <span id="space_pc_rank">&emsp;</span>&emsp;<span id="pc_hint"></span>
+    </div>
+    <div class="form-group">
+      <p><%= @space.address %></p>
+    </div>
+    <div class="form-group">
+      <%= link_to "関連ＨＰ", @space.description, target: '_blank' %>
+    </div><br>
+    <div class="submit-group">
+      <button type='button' class='btn btn-success' data-toggle='modal' data-target='#hantModal'>
+        このスペースをハント
+      </button>
+      <% if current_user == @space.user %>
+        &emsp;<%= link_to '編集', edit_space_path(@space) %>
+      <% end %>
+    </div>
+  </div>
+</div>

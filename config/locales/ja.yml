@@ -231,8 +231,8 @@ ja:
         profile: プロフィール
         password: パスワード
         password_confirmation: 確認用パスワード
-        space: スペース
-        hant: ハント
+        space_id: スペース
+        hant_id: ハント
       space:
         title: 名称
         description: URL
@@ -240,8 +240,15 @@ ja:
         category: カテゴリー
         latitude: 緯度
         longitude: 経度
-        user: ユーザー
-        hant: ハント
+        user_id: ユーザー
+        hant_id: ハント
+      hant:
+        one_phrase: ハントタイトル
+        content: 内容
+        study_evaluation: 勉強スペース評価
+        pc_evaluation: パソコンスペース評価
+        space_id: スペース
+        user_id: ユーザー
   spaces:
     new:
       cafe: カフェ
@@ -260,6 +267,28 @@ ja:
       original: オリジナルスペース（その他）
       space_form: スペース情報
       creating: "作成中..."
+      edit_space: スペースを編集
+      editing: "編集中..."
+    space_show_form:
+      address: 住所
+      category: カテゴリー
+      cafe: カフェ
+      library: 図書館
+      original: オリジナルスペース（その他）
+      space_form: スペース情報
+      study_evaluation: 勉強スペース評価
+      pc_evaluation: パソコンスペース評価
   hants:
     hant_form:
-      contents: 静かさ，費用，コンセント・Wi-Fiの有無など
+      one_phrase: ハントタイトル（50字以内）
+      content_etc: 静かさ、費用、コンセント・Wi-Fiの有無など
+      study_evaluation: 勉強スペース評価
+      pc_evaluation: パソコンスペース評価
+      space_hant: ハント
+      hanting: "ハント中..."
+      close: 閉じる
+      Space: スペース
+    hant:
+      hanted: ''
+      ago: 前にハントされました
+      delete: 削除

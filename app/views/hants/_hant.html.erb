@@ -1,0 +1,52 @@
+<div class="container-inner inner-default clearfix">
+  <% @hants.each_with_index do |hant, index| %>
+    <div class="hant">
+      <h4 class="hant-title"><%= hant.one_phrase %></h4>
+      <div class="hant-content">
+        <div><%= hant.user.name %></div>
+        <div class="study_rank">
+          勉強スペース評価&emsp;<span id="study_rank_<%= index %>"></span>
+        </div>
+        <script>
+          $('#study_rank_<%= index %>').raty({
+              size     : 24,
+              score    : <%= hant.study_evaluation %>,
+              starOff  : '/assets/star-off.png',
+              starOn   : '/assets/star-on.png',
+              starHalf : '/assets/star-half.png',
+              hints    : null,
+              readOnly : true,
+          });
+        </script>
+        <div class="pc_rank">
+          パソコンスペース評価&emsp;<span id="pc_rank_<%= index %>"></span>
+        </div>
+        <script>
+          $('#pc_rank_<%= index %>').raty({
+              size     : 24,
+              score    : <%= hant.pc_evaluation %>,
+              starOff  : '/assets/star-off.png',
+              starOn   : '/assets/star-on.png',
+              starHalf : '/assets/star-half.png',
+              hints    : null,
+              readOnly : true,
+          });
+        </script>
+        <div><%= hant.content %></div><br>
+        <span class="timestamp">
+          <%= t('.hanted', default: 'Hanted ') %>
+          <%= time_ago_in_words(hant.created_at) %>
+          <%= t('.ago', default: 'ago.') %>
+        </span>
+        <% if current_user == hant.user %>
+          <%= link_to t('.delete'), hant, method: :delete,
+              data: { confirm: t('js.sure', default: 'Are you sure?') } %>
+        <% end %>
+      </div>
+      <!--<div class="detail">-->
+      <!--  <p class="title">-->
+      <!--  </p>-->
+      <!--</div>-->
+    </div>
+  <% end %>
+</div>

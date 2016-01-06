@@ -1,39 +1,114 @@
-<p id="notice"><%= notice %></p>
+<% content_for :head do %>
+  <title>Map - SpaceHants</title>
+  <meta name="description" content="SpaceHantsの詳細表示です。スペースの詳細を表示しています。">
+  <meta name="keywords" content="SpaceHants,Space">
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @space.title %>
-</p>
+<div class="container">
+  <div class="container-inner inner-default clearfix">
+    <div class="map-box">
+      <div class="detail">
+        <h2 class="title">スペースの場所</h2>
+      </div>
+      <div class="map-image">
+        <div class="map-wrap">
+          <div id="map" style='width: 700px; height: 500px;'></div>
+        </div>
+      </div>
+    </div>
+    <section class="space_form">
+      <%= render 'spaces/space_show_form' %>
+    </section>
+  </div>
+  <section class="hant">
+    <%= render 'hants/hant' %>
+  </section>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @space.description %>
-</p>
+<div class='modal fade' id='hantModal' tabindex='-1'>
+	<div class='modal-dialog'>
+		<div class='modal-content'>
+			<div class='modal-header'>
+				<button type='button' class='close' data-dismiss='modal'><span>×</span></button>
+				<h4 class='modal-title'>ハント内容を入力</h4>
+			</div>
+			<div class='modal-body'>
+        <%= render 'hants/hant_form' %>
+			</div>
+		</div>
+	</div>
+</div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @space.address %>
-</p>
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(15);
+    handler.getMap().setCenter(new google.maps.LatLng(<%= @space.latitude %>, <%= @space.longitude %>));
+  });
+</script>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @space.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @space.longitude %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @space.category %>
-</p>
-
-<p>
-  <strong>User_id:</strong>
-  <%= @space.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_space_path(@space) %> |
-<%= link_to 'Back', spaces_path %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="./jquery.raty.js"></script>
+<script>
+  $('#my_study_rank').raty({
+    size       : 24,
+    starOff    : '/assets/star-off.png',
+    starOn     : '/assets/star-on.png',
+    hints      : null,
+    cancel     : true,
+    cancelOff  : '/assets/cancel-off.png',
+    cancelOn   : '/assets/cancel-on.png',
+    cancelHint : "<%= t('js.cancel', :default => 'Cancel this rating!') %>",
+    click      : function(score, evt) {
+                   $("#hant_study_evaluation").val(score);
+                 }
+  });
+  $('#my_pc_rank').raty({
+    size       : 24,
+    starOff    : '/assets/star-off.png',
+    starOn     : '/assets/star-on.png',
+    hints      : null,
+    cancel     : true,
+    cancelOff  : '/assets/cancel-off.png',
+    cancelOn   : '/assets/cancel-on.png',
+    cancelHint : "<%= t('js.cancel', :default => "Cancel this rating!") %>",
+    click      : function(score, evt) {
+                   $("#hant_pc_evaluation").val(score);
+                 }
+  });
+  $('#space_study_rank').raty({
+    size      : 24,
+    score     : <%= if @hants.blank?
+                     0
+                    else
+                      @hants.average(:study_evaluation).round(2)
+                    end %>,
+    starOff   : '/assets/star-off.png',
+    starOn    : '/assets/star-on.png',
+    starHalf  : '/assets/star-half.png',
+    hints     : null,
+    target    : '#study_hint',
+    targetType: 'score',
+    targetKeep: true,
+    readOnly  : true,
+  });
+  $('#space_pc_rank').raty({
+    size      : 24,
+    score     : <%= if @hants.blank?
+                      0
+                    else
+                      @hants.average(:pc_evaluation).round(2)
+                    end %>,
+    starOff   : '/assets/star-off.png',
+    starOn    : '/assets/star-on.png',
+    starHalf  : '/assets/star-half.png',
+    hints     : null,
+    target    : '#pc_hint',
+    targetType: 'score',
+    targetKeep: true,
+    readOnly  : true,
+  });
+</script>

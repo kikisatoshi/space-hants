@@ -1,1 +1,1 @@
-json.extract! @space, :id, :title, :description, :address, :latitude, :longitude, :category, :created_at, :updated_at
+json.extract! @space, :id, :title, :description, :address, :latitude, :longitude, :category, :created_at, :updated_at, :user_id

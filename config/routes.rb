@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index]
   resources :spaces
-  resources :hants
+  resources :hants, only: [:index, :create, :destroy]
 
   scope '(:locale)', locale: /en/ do
     resources :posts, param: :slug

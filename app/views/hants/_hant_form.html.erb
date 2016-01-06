@@ -1,0 +1,30 @@
+<%= form_for(@hant) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="form-group">
+    <%= f.label t('.study_evaluation', :default => "Rating for study") %>
+    &emsp;<span id="my_study_rank"></span>
+    <%= f.hidden_field :study_evaluation %>
+  </div>
+  <div class="form-group">
+    <%= f.label t('.pc_evaluation', :default => "Rating for PC") %>
+    &emsp;<span id="my_pc_rank"></span>
+    <%= f.hidden_field :pc_evaluation %>
+  </div>
+  <div class="form-group">
+    <%= f.label :one_phrase, t('.one_phrase', :default => "One Phrase (less than 50 characters)") %>
+    <%= f.text_field :one_phrase, class: "form-control", autocomplete: "off" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: "form-control",
+        placeholder: t('.content_etc', :default => "Content") %>
+  </div>
+  <%= f.hidden_field :space_id, :value => @space.id %>
+  <div class="submit-group">
+    <%= f.submit t('.space_hant', :default => "Space Hant"), 
+      class: "btn btn-success", data: { disable_with: t('.hanting', :default => "Now Hanting...")} %>
+		<button type='button' class='btn btn-default' data-dismiss='modal'>
+		  <%= t('.close', :default => "Close") %>
+		</button>
+  </div>
+<% end %>

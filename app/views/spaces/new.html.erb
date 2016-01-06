@@ -4,12 +4,12 @@
 
 <% content_for :head do %>
   <title>Map - SpaceHants</title>
-  <meta name="description" content="SpaceHantsの地図表示です。ユーザーがHantした場所を表示しています。">
+  <meta name="description" content="SpaceHantsの地図表示です。ユーザーがHantしたスペースを表示しています。">
   <meta name="keywords" content="SpaceHants,Map">
 <% end %>
 
 <div class="container">
-  <div class="container-inner inner-default">
+  <div class="container-inner inner-default clearfix">
     <div class="map-box">
       <div class="detail">
         <h2 class="title">緑のピンを動かして好きなスペースをハントしよう</h2>
@@ -20,28 +20,10 @@
         </div>
       </div>
     </div>
+    <section class="space_form">
+      <%= render 'space_form' %>
+    </section>
   </div>
-  <section class="space_form">
-    <%= render 'space_form' %>
-  </section>
-</div>
-
-<div class='modal fade' id='hantModal' tabindex='-1'>
-	<div class='modal-dialog'>
-		<div class='modal-content'>
-			<div class='modal-header'>
-				<button type='button' class='close' data-dismiss='modal'><span>×</span></button>
-				<h4 class='modal-title'>タイトル</h4>
-			</div>
-			<div class='modal-body'>
-				本文
-			</div>
-			<div class='modal-footer'>
-				<button type='button' class='btn btn-default' data-dismiss='modal'>閉じる</button>
-				<button type='button' class='btn btn-primary'>ボタン</button>
-			</div>
-		</div>
-	</div>
 </div>
 
 <script type="text/javascript">
@@ -68,12 +50,6 @@
     handler.getMap().setZoom(12);
     handler.getMap().setCenter(new google.maps.LatLng(lat, lng));
   });
-  // google.maps.event.addListener(markers, "click", function() {
-  //   var infowindow = new google.maps.InfoWindow({
-  //     content: "<b>マーカー</b>と<i>ウィンドウ</i>のサンプルです"
-  //   });
-  //   infowindow.open(map, marker);
-  // });
 	var marker = new google.maps.Marker({
   	position: new google.maps.LatLng(lat, lng),
   	title: "現在地",

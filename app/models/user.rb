@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   validates :profile, length: { maximum: 160 }
 
   has_many :hanterships, foreign_key: "user_id", dependent: :destroy
-  has_many :hants, through: :hanterships
+  has_many :liked_hants, through: :hanterships
 
+  has_many :hants
   has_many :spaces
 end

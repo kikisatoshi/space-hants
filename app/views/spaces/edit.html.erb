@@ -1,6 +1,11 @@
-<h1>Editing Space</h1>
+<% content_for :head do %>
+  <title>Map - SpaceHants</title>
+  <meta name="description" content="SpaceHantsの詳細表示です。スペースの詳細を表示しています。">
+  <meta name="keywords" content="SpaceHants,Space">
+<% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @space %> |
-<%= link_to 'Back', spaces_path %>
+<div class="container">
+  <div class="container-inner inner-default clearfix">
+    <%= render 'space_form' %>
+  </div>
+</div>

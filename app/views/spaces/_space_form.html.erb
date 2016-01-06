@@ -4,7 +4,7 @@
     <%= form_for(@space) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="form-group">
-        <%= f.label t('.address', :default => "Address"), id: "adrsLabel" %>
+        <%= f.label :address, id: "adrsLabel" %>
         <%= f.text_area :address, class: "form-control", readonly: true %>
       </div>
       <div class="form-group">
@@ -23,18 +23,25 @@
       </div>
       <div class="form-group">
         <%= f.label :description, "URL" %>
-        <%= f.text_field :description, class: "form-control",
+        <%= f.url_field :description, class: "form-control",
             placeholder: t('.description', :default => "URL"),
             autocomplete: "off" %>
       </div>
-      <%= f.label :category %>&nbsp;&nbsp;
+      <%= f.label :category %>&emsp;
       <%= f.select :category, [[t('.cafe', :default => "Cafe"), "cafe"],
           [t('.library', :default => "Library"), "library"],
           [t('.original', :default => "Original Space(Others)"), "original"]] %>
-      <div class="submit-group">
-        <%= f.submit t('.create_space', :default => "Create this space"), 
-        class: "btn btn-success", data: { disable_with: t('.creating', :default => "Now Creating")} %>
-      </div>
+      <% if request.path=='/spaces/new' %>
+        <div class="submit-group">
+          <%= f.submit t('.create_space', :default => "Create this space"), 
+              class: "btn btn-success", data: { disable_with: t('.creating', :default => "Now Creating...")} %>
+        </div>
+      <% else %>
+        <div class="submit-group">
+          <%= f.submit t('.edit_space', :default => "Edit this space"), 
+              class: "btn btn-success", data: { disable_with: t('.editing', :default => "Now Editing...")} %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
