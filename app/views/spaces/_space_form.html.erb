@@ -1,4 +1,4 @@
-<% if request.path=='/spaces/new' || request.path=='/spaces' %>
+<% if request.path.include?('/spaces/new') || request.path==('/spaces') || request.path==('/en/spaces') || request.path==('/ja/spaces') %>
 <div class="spacebox">
 <% else %>
 <div class="edit-spacebox">
@@ -39,7 +39,7 @@
             [t('.library', :default => "Library"), "library"],
             [t('.original', :default => "Original Space(Others)"), "original"]] %>
       </div>
-      <% if request.path=='/spaces/new' || request.path=='/spaces' %>
+      <% if request.path.include?('/spaces/new') || request.path==('/spaces') || request.path==('/en/spaces') || request.path==('/ja/spaces') %>
         <div class="submit-group">
           <%= f.submit t('.hant_space', :default => "Create"), 
               class: "btn btn-success", data: { disable_with: t('.hanting', :default => "Now Hanting...")} %>

@@ -46,6 +46,8 @@ gem "gmaps4rails"
 gem "geocoder"
 gem 'google_places'
 
+gem 'jquery-turbolinks'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -13,8 +13,9 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require turbolinks
-//= require_tree .
 //= require i18n
 //= require underscore
 //= require gmaps/google
+//= require_tree .
