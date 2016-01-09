@@ -49,9 +49,9 @@
 $('#study_rank_<%= hant_counter %>').raty({
     size      : 24,
     score     : <%= hant.study_evaluation %>,
-    starOff   : '/assets/star-off.png',
-    starOn    : '/assets/star-on.png',
-    starHalf  : '/assets/star-half.png',
+    starOff   : '<%= asset_path "star-off.png" %>',
+    starOn    : '<%= asset_path "star-on.png" %>',
+    starHalf  : '<%= asset_path "star-half.png" %>',
     hints     : null,
     readOnly  : true,
     noRatedMsg: '0'
@@ -60,9 +60,9 @@ $('#study_rank_<%= hant_counter %>').raty({
 $('#pc_rank_<%= hant_counter %>').raty({
     size      : 24,
     score     : <%= hant.pc_evaluation %>,
-    starOff   : '/assets/star-off.png',
-    starOn    : '/assets/star-on.png',
-    starHalf  : '/assets/star-half.png',
+    starOff   : '<%= asset_path "star-off.png" %>',
+    starOn    : '<%= asset_path "star-on.png" %>',
+    starHalf  : '<%= asset_path "star-half.png" %>',
     hints     : null,
     readOnly  : true,
     noRatedMsg: '0'

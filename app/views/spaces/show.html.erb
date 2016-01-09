@@ -50,34 +50,31 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 });
 </script>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script type="text/javascript" src="/assets/jquery.raty.js"></script>
-<script type="text/javascript" src="/assets/jquery.jtruncsubstr.js"></script>
 <script>
 $('#my_study_rank').raty({
-  size       : 24,
-  starOff    : '/assets/star-off.png',
-  starOn     : '/assets/star-on.png',
-  hints      : null,
-  cancel     : true,
-  cancelOff  : '/assets/cancel-off.png',
-  cancelOn   : '/assets/cancel-on.png',
-  cancelHint : "<%= t('js.cancel', :default => 'Cancel this rating!') %>",
-  click      : function(score, evt) {
-                 $("#hant_study_evaluation").val(score);
-               }
+    size       : 24,
+    starOff   : '<%= asset_path "star-off.png" %>',
+    starOn    : '<%= asset_path "star-on.png" %>',
+    hints      : null,
+    cancel     : true,
+    cancelOff   : '<%= asset_path "cancel-off.png" %>',
+    cancelOn    : '<%= asset_path "cancel-on.png" %>',
+    cancelHint : "<%= t('js.cancel', :default => 'Cancel this rating!') %>",
+    click      : function(score, evt) {
+                   $("#hant_study_evaluation").val(score);
+                 }
 });
 $('#my_pc_rank').raty({
-  size       : 24,
-  starOff    : '/assets/star-off.png',
-  starOn     : '/assets/star-on.png',
-  hints      : null,
-  cancel     : true,
-  cancelOff  : '/assets/cancel-off.png',
-  cancelOn   : '/assets/cancel-on.png',
-  cancelHint : "<%= t('js.cancel', :default => "Cancel this rating!") %>",
-  click      : function(score, evt) {
-                 $("#hant_pc_evaluation").val(score);
-               }
+    size       : 24,
+    starOff   : '<%= asset_path "star-off.png" %>',
+    starOn    : '<%= asset_path "star-on.png" %>',
+    hints      : null,
+    cancel     : true,
+    cancelOff   : '<%= asset_path "cancel-off.png" %>',
+    cancelOn    : '<%= asset_path "cancel-on.png" %>',
+    cancelHint : "<%= t('js.cancel', :default => "Cancel this rating!") %>",
+    click      : function(score, evt) {
+                   $("#hant_pc_evaluation").val(score);
+                 }
 });
 </script>
