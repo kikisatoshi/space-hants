@@ -17,6 +17,7 @@ class SpacesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@space) do |space, marker|
       marker.lat space.latitude
       marker.lng space.longitude
+      marker.title space.title
       marker.json({title: space.title})
     end
   end
@@ -33,9 +34,11 @@ class SpacesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
       marker.lat space.latitude
       marker.lng space.longitude
+      marker.title space.title
       marker.infowindow get_marker_info(space)
       marker.json({title: space.title})
     end
+    Geocoder.configure(:language  => :en)
     @space = current_user.spaces.build
   end
 
@@ -49,13 +52,14 @@ class SpacesController < ApplicationController
     @space = current_user.spaces.build(space_params)
     respond_to do |format|
       if @space.save
-        format.html { redirect_to @space, flash:{success: 'スペースが作成されました'} }
+        format.html { redirect_to @space, flash:{success: t('js.hanted', default: 'Space was hanted.')} }
         format.json { render :show, status: :created, location: @space }
       else
         @spaces = Space.all
         @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
           marker.lat space.latitude
           marker.lng space.longitude
+          marker.title space.title
           marker.infowindow get_marker_info(space)
           marker.json({title: space.title})
         end
@@ -70,7 +74,7 @@ class SpacesController < ApplicationController
   def update
     respond_to do |format|
       if @space.update(space_params)
-        format.html { redirect_to @space, flash:{success: 'スペースが更新されました'} }
+        format.html { redirect_to @space, flash:{success: t('js.updated', default: 'Space was updated.')} }
         format.json { render :show, status: :ok, location: @space }
       else
         format.html { render :edit }
@@ -84,7 +88,7 @@ class SpacesController < ApplicationController
   def destroy
     @space.destroy
     respond_to do |format|
-      format.html { redirect_to spaces_url, flash:{success: 'スペースが削除されました'} }
+      format.html { redirect_to spaces_url, flash:{success: t('js.space_deleted', default: 'Space was deleted.')} }
       format.json { head :no_content }
     end
   end
@@ -101,7 +105,6 @@ class SpacesController < ApplicationController
     end
 
     def get_marker_info(space)
-      category = t(".#{space.category}")
       case space.category
       when "cafe"
         gliyphicon = "glyphicon-glass"
@@ -110,8 +113,11 @@ class SpacesController < ApplicationController
       else
         gliyphicon = "glyphicon-globe"
       end
-      return "<span class='glyphicon #{gliyphicon}' aria-hidden='true'></span> #{category}<br>
+      return "<span class='glyphicon #{gliyphicon}' aria-hidden='true'></span>
+              #{t("js.#{space.category}")}<br>
               #{space.title}<br>
-              <a class='btn btn-success btn-xs' href='/spaces/#{space.id}'>スペースの詳細を見る</a>"
+              <a class='btn btn-success btn-xs' href='/spaces/#{space.id}'>
+                #{t('js.detail', default: 'Watch the detail')}
+              </a>"
     end
 end

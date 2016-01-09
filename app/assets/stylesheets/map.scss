@@ -1,6 +1,6 @@
 .map-box {
   max-width: 722px;
-  margin: 15px auto;
+  margin: 15px 20px 15px 0px;
   float: left;
   border: 1px solid #ddd;
   background: #fff;
@@ -13,7 +13,7 @@
       margin: 0;
       padding: 15px 20px;
       font-weight: normal;
-      font-size: 20px;
+      font-size: 24px;
       background: #fafafa;
       border: none;
       border-top-left-radius: 3px;
@@ -28,12 +28,15 @@
   .map-image {
     width: 720px;
     height: 520px;
-    display: table;
     .map-wrap {
       padding: 10px;
       display: table-cell;
       vertical-align: middle;
       text-align: center;
+      #map {
+        width: 700px;
+        height: 500px;
+      }
     }
   }
 }

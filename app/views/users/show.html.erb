@@ -1,0 +1,15 @@
+<% content_for :head do %>
+  <title><%= @user.name %> - SpaceHants</title>
+  <meta name="description" content="<%= @user.name %>のページ。<%= @user.name %>のプロフィールとハントしたスペース一覧を表示しています。">
+  <meta name="keywords" content="SpaceHants,<%= @user.name %>">
+<% end %>
+
+<%= render 'profile' , user: @user %>
+
+<div class="container">
+  <div class="container-inner inner-default clearfix">
+    <% @spaces.each do |space| %>
+      <%= render 'spaces/spaces_show', space: space, hants: @hant_model.where(space_id: space.id) %>
+    <% end %>
+  </div>
+</div>

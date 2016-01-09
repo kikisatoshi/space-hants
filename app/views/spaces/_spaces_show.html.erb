@@ -1,0 +1,71 @@
+<div class="spaces-box">
+  <div class="spacebox">
+    <h3 class="spacebox-detail-title"><%= space.title %></h3>
+    <div class="spacebox-inner">
+      <div class="form-group">
+        <strong><%= t(".#{space.category}") %></strong>
+      </div>
+      <div class="form-group">
+        <label><%= t('.study_evaluation', :default => "Rating for Study") %></label>
+        <span id="<%= space.id %>_study_rank">&emsp;</span>&emsp;
+        <span id="<%= space.id %>_study_hint" class="hint"></span>
+      </div>
+      <div class="form-group">
+        <label><%= t('.pc_evaluation', :default => "Rating for PC") %></label>
+        <span id="<%= space.id %>_pc_rank">&emsp;</span>&emsp;
+        <span id="<%= space.id %>_pc_hint" class="hint"></span>
+      </div>
+      <div class="submit-group">
+        <%= link_to t('js.detail', default: "Watch the detail"), space,
+            class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/jquery.raty.js"></script>
+<script>
+$('#<%= space.id %>_study_rank').raty({
+  size      : 24,
+  score     : <%= if hants.blank?
+                   0
+                  else
+                    hants.average(:study_evaluation).round(1)
+                  end %>,
+  starOff   : '/assets/star-off.png',
+  starOn    : '/assets/star-on.png',
+  starHalf  : '/assets/star-half.png',
+  hints     : null,
+  target    : '#<%= space.id %>_study_hint',
+  targetType: 'score',
+  targetKeep: true,
+  readOnly  : true,
+  noRatedMsg: "<%= if hants.blank?
+                    t('js.not_yet', :default => "Not rated yet!")
+                  else
+                    0.0
+                  end %>",
+});
+$('#<%= space.id %>_pc_rank').raty({
+  size      : 24,
+  score     : <%= if hants.blank?
+                    0
+                  else
+                    hants.average(:pc_evaluation).round(1)
+                  end %>,
+  starOff   : '/assets/star-off.png',
+  starOn    : '/assets/star-on.png',
+  starHalf  : '/assets/star-half.png',
+  hints     : null,
+  target    : '#<%= space.id %>_pc_hint',
+  targetType: 'score',
+  targetKeep: true,
+  readOnly  : true,
+  noRatedMsg: "<%= if hants.blank?
+                    t('js.not_yet', :default => "Not rated yet!")
+                  else
+                    0.0
+                  end %>",
+});
+</script>

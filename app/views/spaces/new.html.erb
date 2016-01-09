@@ -1,22 +1,18 @@
-<!--<h1>New Space</h1>-->
-<!--<= render 'form' %>-->
-<!--<= link_to 'Back', spaces_path %>-->
-
 <% content_for :head do %>
   <title>Map - SpaceHants</title>
-  <meta name="description" content="SpaceHantsの地図表示です。ユーザーがHantしたスペースを表示しています。">
-  <meta name="keywords" content="SpaceHants,Map">
+  <meta name="description" content="SpaceHantsの地図ページです。ユーザーがハントしたスペースを表示しています。">
+  <meta name="keywords" content="SpaceHants,Map,Space">
 <% end %>
 
 <div class="container">
   <div class="container-inner inner-default clearfix">
     <div class="map-box">
       <div class="detail">
-        <h2 class="title">緑のピンを動かして好きなスペースをハントしよう</h2>
+        <h2 class="title"><%= t('.map_title', default: "Let's move a green pin and hant your space!") %></h2>
       </div>
       <div class="map-image">
         <div class="map-wrap">
-          <div id="map" style='width: 700px; height: 500px;'></div>
+          <div id="map"></div>
         </div>
       </div>
     </div>
@@ -27,52 +23,53 @@
 </div>
 
 <script type="text/javascript">
-  var lat = 35.681382, lng = 139.766084;
-  var markers;
-  $(document).ready(function(){
-    if (navigator.geolocation) {
-      // 現在の位置情報を取得
-      navigator.geolocation.getCurrentPosition(
-        function (pos) {
-          lat = pos.coords.latitude;
-          lng = pos.coords.longitude;
-      		marker.setPosition(new google.maps.LatLng(lat, lng));
-      		setAdrs(lat, lng);
-  		  }
-  		);
-  	}
+var lat = 35.68138, lng = 139.76608;
+var markers;
+$(document).ready(function(){
+  if (navigator.geolocation) {
+    // 現在の位置情報を取得
+    navigator.geolocation.getCurrentPosition(
+      function (pos) {
+        lat = pos.coords.latitude;
+        lng = pos.coords.longitude;
+    		marker.setPosition(new google.maps.LatLng(lat, lng));
+    		setAdrs(lat, lng);
+        handler.getMap().setCenter(new google.maps.LatLng(lat, lng));
+        handler.getMap().setZoom(12);
+		  }
+		);
+	}
+});
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  handler.getMap().setZoom(12);
+  handler.getMap().setCenter(new google.maps.LatLng(lat, lng));
+});
+var marker = new google.maps.Marker({
+	position: new google.maps.LatLng(lat, lng),
+	title: "現在地",
+	draggable: true,
+	map: handler.getMap(),
+	icon:{
+	  url: "http://googlemaps.googlermania.com/img/google-marker-big.png",
+    scaledSize: new google.maps.Size( 23 , 42 )
+	}
+});
+google.maps.event.addListener(marker, 'dragend', function(ev){
+	setAdrs(ev.latLng.lat(), ev.latLng.lng());
+});
+function setAdrs(lat, lng){
+  var ll = new google.maps.LatLng(lat, lng);
+  var gc = new google.maps.Geocoder();
+  gc.geocode({ location : ll }, function(results, status){
+    if (status == google.maps.GeocoderStatus.OK) {
+      document.getElementById("space_address").value = results[0].formatted_address;
+    }
   });
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    handler.getMap().setZoom(12);
-    handler.getMap().setCenter(new google.maps.LatLng(lat, lng));
-  });
-	var marker = new google.maps.Marker({
-  	position: new google.maps.LatLng(lat, lng),
-  	title: "現在地",
-    infowindow: "右のフォームを入力してHant",
-  	draggable: true,
-		map: handler.getMap(),
-		icon:{
-		  url: "http://googlemaps.googlermania.com/img/google-marker-big.png",
-      scaledSize: new google.maps.Size( 23 , 42 )
-		}
-	});
-	google.maps.event.addListener(marker, 'dragend', function(ev){
-		setAdrs(ev.latLng.lat(), ev.latLng.lng());
-	});
-  function setAdrs(lat, lng){
-    var ll = new google.maps.LatLng(lat, lng);
-    var gc = new google.maps.Geocoder();
-    gc.geocode({ location : ll }, function(results, status){
-      if (status == google.maps.GeocoderStatus.OK) {
-        document.getElementById("space_address").value = results[0].formatted_address;
-      }
-    });
-    document.getElementById("space_latitude").value = lat;
-    document.getElementById("space_longitude").value = lng;
-  }
+  document.getElementById("space_latitude").value = Math.round(lat*100000)/100000;
+  document.getElementById("space_longitude").value = Math.round(lng*100000)/100000;
+}
 </script>

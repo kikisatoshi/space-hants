@@ -1,0 +1,108 @@
+#map　{
+  display:block;
+}
+
+.spacebox {
+  float: left;
+  width: 390px;
+  margin: 15px 5px;
+  border: 1px solid #ddd;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  .spacebox-title {
+    margin: 0;
+    height: 55px;
+    padding: 15px 20px;
+    font-weight: normal;
+    background: #fafafa;
+    border: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  .spacebox-detail-title{
+    margin: 0;
+    max-height: 140px;
+    padding: 15px 20px;
+    font-weight: normal;
+    background: #fafafa;
+    border: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    word-wrap: break-word;
+  }
+  .spacebox-inner {
+    padding: 20px;
+    display: inline-block;
+    textarea {
+      max-height: 100px;
+    }
+    .category-title {
+      font-weight: bold;
+      color: #000;
+    }
+    #adrsLabel {
+      vertical-align: top;
+    }
+    .latLonForm {
+      margin-left: -15px;
+      color: #000;
+    }
+    .hint {
+      color: orange;
+      font-size: 22px;
+    }
+    .gravatar {
+      margin-left: 5px;
+    }
+  }
+  #edit-btn {
+    margin-left: 15px;
+  }
+}
+.spaces-box {
+  float: left;
+  min-height: 380px;
+}
+
+.edit-spacebox {
+  width: 390px;
+  margin: 15px auto;
+  border: 1px solid #ddd;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  .spacebox-title {
+    margin: 0;
+    height: 55px;
+    padding: 15px 20px;
+    font-weight: normal;
+    background: #fafafa;
+    border: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  .spacebox-inner {
+    padding: 20px;
+    display: inline-block;
+    textarea {
+      max-height: 100px;
+    }
+    .category-title {
+      font-weight: bold;
+      color: #000;
+    }
+    #adrsLabel {
+      vertical-align: top;
+    }
+    .latLonForm {
+      margin-left: -15px;
+      color: #000;
+    }
+  }
+}

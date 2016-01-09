@@ -1,2 +1,2 @@
 var I18n = I18n || {};
-I18n.translations = {"ja":{"js":{"cancel":"キャンセル","bad":"悪い","poor":"やや悪い","regular":"普通","good":"良い","gorgeous":"大変良い","sure":"よろしいですか？"}}};
+I18n.translations = {"en":{"js":{"cafe":"Cafe","library":"Library","original":"Original Space(Others)"}},"ja":{"js":{"cancel":"キャンセル","bad":"悪い","poor":"やや悪い","regular":"普通","good":"良い","gorgeous":"大変良い","sure":"よろしいですか？","failed_review":"レビューに失敗しました。","not_yet":"未評価","reviewed":"レビューしました。","review_deleted":"レビューが削除されました。","hanted":"スペースがハントされました。","updated":"スペースが更新されました。","space_deleted":"スペースが削除されました。","detail":"スペースの詳細を見る","cafe":"カフェ","library":"図書館","original":"オリジナルスペース（その他）","more":"続きを読む"}}};

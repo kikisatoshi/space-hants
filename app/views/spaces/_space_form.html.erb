@@ -1,5 +1,9 @@
+<% if request.path=='/spaces/new' || request.path=='/spaces' %>
 <div class="spacebox">
-  <h2 class="spacebox-title"><%= t('.space_form', :default => "Space Information") %></h2>
+<% else %>
+<div class="edit-spacebox">
+<% end %>
+  <h3 class="spacebox-title"><%= t('.space_form', :default => "Space Information") %></h3>
   <div class="spacebox-inner">
     <%= form_for(@space) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
@@ -7,13 +11,15 @@
         <%= f.label :address, id: "adrsLabel" %>
         <%= f.text_area :address, class: "form-control", readonly: true %>
       </div>
-      <div class="form-group">
-        <%= f.label t('.latitude', :default => "Latitude") %>
-        <%= f.text_field :latitude, class: "form-control", readonly: true %>
-      </div>
-      <div class="form-group">
-        <%= f.label t('.longitude', :default => "Longitude") %>
-        <%= f.text_field :longitude, class: "form-control", readonly: true %>
+      <div class="form-group latLonForm row">
+        <div class="col-xs-6">
+          <%= f.label :latitude %>
+          <%= f.text_field :latitude, class: "form-control", readonly: true %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :longitude %>
+          <%= f.text_field :longitude, class: "form-control", readonly: true %>
+        </div>
       </div>
       <div class="form-group">
         <%= f.label :title %>
@@ -27,18 +33,20 @@
             placeholder: t('.description', :default => "URL"),
             autocomplete: "off" %>
       </div>
-      <%= f.label :category %>&emsp;
-      <%= f.select :category, [[t('.cafe', :default => "Cafe"), "cafe"],
-          [t('.library', :default => "Library"), "library"],
-          [t('.original', :default => "Original Space(Others)"), "original"]] %>
-      <% if request.path=='/spaces/new' %>
+      <div class="form-group">
+        <%= f.label :category %>&emsp;
+        <%= f.select :category, [[t('.cafe', :default => "Cafe"), "cafe"],
+            [t('.library', :default => "Library"), "library"],
+            [t('.original', :default => "Original Space(Others)"), "original"]] %>
+      </div>
+      <% if request.path=='/spaces/new' || request.path=='/spaces' %>
         <div class="submit-group">
-          <%= f.submit t('.create_space', :default => "Create this space"), 
-              class: "btn btn-success", data: { disable_with: t('.creating', :default => "Now Creating...")} %>
+          <%= f.submit t('.hant_space', :default => "Create"), 
+              class: "btn btn-success", data: { disable_with: t('.hanting', :default => "Now Hanting...")} %>
         </div>
       <% else %>
         <div class="submit-group">
-          <%= f.submit t('.edit_space', :default => "Edit this space"), 
+          <%= f.submit t('.edit_space', :default => "Edit"), 
               class: "btn btn-success", data: { disable_with: t('.editing', :default => "Now Editing...")} %>
         </div>
       <% end %>

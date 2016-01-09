@@ -1,3 +1,7 @@
 <footer>
+	<div class="language">
+		<%= link_to "日本語", i18n_url_for(params.merge(locale: :ja)) %>&emsp; |&emsp;
+		<%= link_to "English", i18n_url_for(params.merge(locale: :en)) %>
+	</div><br>
   <div class="copyright">© <%= Date.today.year %> SPACEHANTS.</div>
 </footer>

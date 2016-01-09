@@ -196,7 +196,7 @@ ja:
   time:
     am: 午前
     formats:
-      default: "%Y/%m/%d %H:%M:%S"
+      default: "%Y年%m月%d日"
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
@@ -219,7 +219,7 @@ ja:
 
   activerecord:
     models:
-      hant: ハント
+      hant: レビュー
       user: ユーザー
       favorite: お気に入り
       space: スペース
@@ -230,9 +230,9 @@ ja:
         location: 現在地
         profile: プロフィール
         password: パスワード
-        password_confirmation: 確認用パスワード
+        password_confirmation: 再入力パスワード
         space_id: スペース
-        hant_id: ハント
+        hant_id: レビュー
       space:
         title: 名称
         description: URL
@@ -241,19 +241,17 @@ ja:
         latitude: 緯度
         longitude: 経度
         user_id: ユーザー
-        hant_id: ハント
+        hant_id: レビュー
       hant:
         one_phrase: ハントタイトル
-        content: 内容
+        content: コメント
         study_evaluation: 勉強スペース評価
         pc_evaluation: パソコンスペース評価
         space_id: スペース
         user_id: ユーザー
   spaces:
     new:
-      cafe: カフェ
-      library: 図書館
-      original: オリジナルスペース（その他）
+      map_title: 緑のピンを動かして好きなスペースをハントしよう！
     space_form:
       address: 住所
       title: 名称（必須）
@@ -261,15 +259,19 @@ ja:
       category: カテゴリー
       latitude: 緯度
       longitude: 経度
-      create_space: スペースを作成
+      hant_space: スペースをハント
       cafe: カフェ
       library: 図書館
       original: オリジナルスペース（その他）
       space_form: スペース情報
-      creating: "作成中..."
+      hanting: "ハント中..."
       edit_space: スペースを編集
       editing: "編集中..."
-    space_show_form:
+      lat_lon_error: と経度の組み合わせはすでに存在します
+    show:
+      map_title: スペースの地図表示
+      review_form: レビューフォーム
+    space_show:
       address: 住所
       category: カテゴリー
       cafe: カフェ
@@ -278,17 +280,41 @@ ja:
       space_form: スペース情報
       study_evaluation: 勉強スペース評価
       pc_evaluation: パソコンスペース評価
+      website: 関連ＨＰ
+      review_form: レビューする
+      edit_space: スペースを編集
+      reviewed: レビュー済み
+      hanter: スペースハンター
+      updated: ' 更新'
+      at: ''
+    spaces_show:
+      cafe: カフェ
+      library: 図書館
+      original: オリジナルスペース（その他）
+      study_evaluation: 勉強スペース評価
+      pc_evaluation: パソコンスペース評価
   hants:
     hant_form:
-      one_phrase: ハントタイトル（50字以内）
+      one_phrase: レビュータイトル（50字以内）
       content_etc: 静かさ、費用、コンセント・Wi-Fiの有無など
       study_evaluation: 勉強スペース評価
       pc_evaluation: パソコンスペース評価
-      space_hant: ハント
-      hanting: "ハント中..."
+      review: レビュー
+      reviewing: "レビュー中..."
       close: 閉じる
       Space: スペース
     hant:
-      hanted: ''
-      ago: 前にハントされました
+      ago: 前
       delete: 削除
+      study_evaluation: 勉強スペース評価
+      pc_evaluation: パソコンスペース評価
+  layouts:
+    header:
+      sign_up: 新規登録
+      sign_in: ログイン
+      map: 地図
+      cafe: カフェ
+      library: 図書館
+      original: オリジナルスペース
+      settings: アカウント設定
+      logout: ログアウト

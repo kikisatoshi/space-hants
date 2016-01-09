@@ -1,0 +1,100 @@
+<div class="spacebox">
+  <h3 class="spacebox-detail-title"><%= space.title %></h3>
+  <div class="spacebox-inner">
+    <div class="form-group">
+      <strong><%= t(".#{space.category}") %></strong>
+    </div>
+    <div class="form-group">
+      <label><%= t('.study_evaluation', :default => "Rating for Study") %></label>
+      <span id="<%= space.id %>_study_rank">&emsp;</span>&emsp;
+      <span id="<%= space.id %>_study_hint" class="hint"></span>
+    </div>
+    <div class="form-group">
+      <label><%= t('.pc_evaluation', :default => "Rating for PC") %></label>
+      <span id="<%= space.id %>_pc_rank">&emsp;</span>&emsp;
+      <span id="<%= space.id %>_pc_hint" class="hint"></span>
+    </div>
+    <div class="form-group">
+      <p><%= space.address %></p>
+    </div>
+    <% unless space.description.blank? %>
+      <div class="form-group">
+        <%= link_to t('.website', default: "Go website"), space.description, target: '_blank' %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <strong><%= t(".hanter", default: 'Space Hanter') %></strong>
+      <span class="gravatar">
+        <%= link_to gravatar_for(space.user, size: 30), space.user %>
+      </span>
+      <span class="profile">
+        <%= space.user.name[0, 15] %><% if space.user.name.length > 15 %>...<% end %>
+      </span>
+    </div>
+    <div class="form-group timestamp">
+      <%= t('.at', default: "Updated at ") %><%= l space.updated_at %><%= t('.updated', default: "") %>
+    </div>
+    <div class="submit-group">
+      <% if space.hants.find_by(user_id: current_user.id) %>
+        <button type='button' class='btn btn-success' disabled=true>
+          <%= t('.reviewed', default: "Already Reviewed") %>
+        </button>
+      <% else %>
+        <button type='button' class='btn btn-success' data-toggle='modal' data-target='#hantModal'>
+          <%= t('.review_form', default: "Review Form") %>
+        </button>
+      <% end %>
+      <% if current_user == space.user %>
+        <%= link_to t('.edit_space', default: "Edit Space"), edit_space_path(space),
+            class: 'btn btn-info', id: 'edit-btn' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/jquery.raty.js"></script>
+<script>
+$('#<%= space.id %>_study_rank').raty({
+  size      : 24,
+  score     : <%= if hants.blank?
+                   0
+                  else
+                    hants.average(:study_evaluation).round(1)
+                  end %>,
+  starOff   : '/assets/star-off.png',
+  starOn    : '/assets/star-on.png',
+  starHalf  : '/assets/star-half.png',
+  hints     : null,
+  target    : '#<%= space.id %>_study_hint',
+  targetType: 'score',
+  targetKeep: true,
+  readOnly  : true,
+  noRatedMsg: "<%= if hants.blank?
+                    t('js.not_yet', :default => "Not rated yet!")
+                  else
+                    0.0
+                  end %>",
+});
+$('#<%= space.id %>_pc_rank').raty({
+  size      : 24,
+  score     : <%= if hants.blank?
+                    0
+                  else
+                    hants.average(:pc_evaluation).round(1)
+                  end %>,
+  starOff   : '/assets/star-off.png',
+  starOn    : '/assets/star-on.png',
+  starHalf  : '/assets/star-half.png',
+  hints     : null,
+  target    : '#<%= space.id %>_pc_hint',
+  targetType: 'score',
+  targetKeep: true,
+  readOnly  : true,
+  noRatedMsg: "<%= if hants.blank?
+                    t('js.not_yet', :default => "Not rated yet!")
+                  else
+                    0.0
+                  end %>",
+});
+</script>

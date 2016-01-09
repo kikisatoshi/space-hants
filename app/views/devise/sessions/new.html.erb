@@ -2,12 +2,6 @@
   <h2 class="box-title"><%= t('.sign_in', :default => "Sign in") %></h2>
   <div class="box-inner">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <% if alert.present? %>
-        <div class="alert alert-dismissable alert-danger">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <p><%= alert %></p>
-        </div>
-      <% end %>
       <div class="form-group">
         <%= f.email_field :email, class: "form-control", autofocus: true, placeholder: t('.email', :default => "Email") %>
       </div>

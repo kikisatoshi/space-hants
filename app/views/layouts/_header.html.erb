@@ -10,38 +10,38 @@
             <span class="icon-bar"></span>
           </button>
           <h1 class="logo">
-            <%= link_to "SPACEHANTS", root_path, class: "navbar-brand" %>
+            <%= link_to "SpaceHants", root_path, class: "navbar-brand" %>
           </h1>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <% unless user_signed_in? %>
-              <li><%= link_to "新規登録", new_user_registration_path %></li>
-              <li><%= link_to "ログイン", new_user_session_path %></li>
+              <li><%= link_to t('.sign_up', default: "Sign up"), new_user_registration_path %></li>
+              <li><%= link_to t('.sign_in', default: "Sign in"), new_user_session_path %></li>
             <% else %>
               <li>
                 <%= link_to new_space_path do %>
                   <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                  地図
+                  <%= t('.map', default: "Map") %>
                 <% end %>
               </li>
               <li>
                 <%= link_to '#' do %>
                   <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
-                  カフェ
+                  <%= t('.cafe', default: "Cafe") %>
                 <% end %>
               </li>
               <li>
                 <%= link_to '#' do %>
                   <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                  図書館
+                  <%= t('.library', default: "Library") %>
                 <% end %>
               </li>
               <li>
                 <%= link_to '#' do %>
                   <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-                  オリジナルスペース
+                  <%= t('.original', default: "Original Space") %>
                 <% end %>
               </li>
               <li class="dropdown">
@@ -49,15 +49,16 @@
                   <span class="gravatar">
                     <%= gravatar_for current_user , size: 20 %>
                   </span>
-                  <%= current_user.name %> <span class="caret"></span>
+                  <%= current_user.name[0, 11] %><% if current_user.name.length > 11 %>...<% end %>
+                  <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <%= link_to "アカウント設定", edit_user_registration_path  %>
+                    <%= link_to t('.settings', default: "Account Settings"), edit_user_registration_path  %>
                   </li>
                   <li role="separator" class="divider"></li>
                   <li>
-                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                    <%= link_to t('.logout', default: "Log out"), destroy_user_session_path, method: :delete %>
                   </li>
                 </ul>
               </li>

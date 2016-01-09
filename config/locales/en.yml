@@ -204,7 +204,12 @@ en:
   time:
     am: am
     formats:
-      default: "%a, %d %b %Y %H:%M:%S %z"
+      default: "%d %b %Y"
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+
+  js:
+    cafe: Cafe
+    library: Library
+    original: "Original Space(Others)"

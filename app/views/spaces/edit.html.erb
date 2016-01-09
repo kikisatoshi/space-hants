@@ -1,7 +1,7 @@
 <% content_for :head do %>
-  <title>Map - SpaceHants</title>
-  <meta name="description" content="SpaceHantsの詳細表示です。スペースの詳細を表示しています。">
-  <meta name="keywords" content="SpaceHants,Space">
+  <title><%= @space.title %> - SpaceHants</title>
+  <meta name="description" content="<%= @space.title %>の編集ページです。スペース情報を編集できます。">
+  <meta name="keywords" content="SpaceHants,Space,<%= @space.title %>">
 <% end %>
 
 <div class="container">

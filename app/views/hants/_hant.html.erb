@@ -1,52 +1,82 @@
-<div class="container-inner inner-default clearfix">
-  <% @hants.each_with_index do |hant, index| %>
-    <div class="hant">
-      <h4 class="hant-title"><%= hant.one_phrase %></h4>
-      <div class="hant-content">
-        <div><%= hant.user.name %></div>
-        <div class="study_rank">
-          勉強スペース評価&emsp;<span id="study_rank_<%= index %>"></span>
-        </div>
-        <script>
-          $('#study_rank_<%= index %>').raty({
-              size     : 24,
-              score    : <%= hant.study_evaluation %>,
-              starOff  : '/assets/star-off.png',
-              starOn   : '/assets/star-on.png',
-              starHalf : '/assets/star-half.png',
-              hints    : null,
-              readOnly : true,
-          });
-        </script>
-        <div class="pc_rank">
-          パソコンスペース評価&emsp;<span id="pc_rank_<%= index %>"></span>
-        </div>
-        <script>
-          $('#pc_rank_<%= index %>').raty({
-              size     : 24,
-              score    : <%= hant.pc_evaluation %>,
-              starOff  : '/assets/star-off.png',
-              starOn   : '/assets/star-on.png',
-              starHalf : '/assets/star-half.png',
-              hints    : null,
-              readOnly : true,
-          });
-        </script>
-        <div><%= hant.content %></div><br>
-        <span class="timestamp">
-          <%= t('.hanted', default: 'Hanted ') %>
-          <%= time_ago_in_words(hant.created_at) %>
-          <%= t('.ago', default: 'ago.') %>
+<div class="hants-box">
+  <div class="hant-box">
+    <h4 class="hant-title"><%= hant.content[0, 13] %><% if hant.content.length > 13 %>...<% end %></h4>
+    <div class="hant-content">
+      <div class="hant-user clearfix">
+        <span class="gravatar">
+          <%= link_to gravatar_for(hant.user, size: 50), hant.user %>
         </span>
-        <% if current_user == hant.user %>
-          <%= link_to t('.delete'), hant, method: :delete,
-              data: { confirm: t('js.sure', default: 'Are you sure?') } %>
-        <% end %>
+        <span class="profile">
+          <div class="user-name">
+            <%= hant.user.name[0, 15] %><% if hant.user.name.length > 15 %>...<% end %>
+          </div>
+          <div class="hometown">
+            <% if hant.user.hometown.blank? %><br><% else %>
+              <%= hant.user.hometown[0, 16] %><% if hant.user.hometown.length > 16 %>...<% end %>
+            <% end %>
+          </div>
+        </span>
       </div>
-      <!--<div class="detail">-->
-      <!--  <p class="title">-->
-      <!--  </p>-->
-      <!--</div>-->
+      <div class="form-group">
+        <div class="study_rank">
+          <%= t('.study_evaluation', :default => "Rating for Study") %>
+          &emsp;<span id="study_rank_<%= hant_counter %>"></span>
+        </div>
+        <div class="pc_rank form-group">
+          <%= t('.pc_evaluation', :default => "Rating for PC") %>
+          &emsp;<span id="pc_rank_<%= hant_counter %>"></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <span class="hant_content" id="content_<%= hant_counter %>"><%= hant.content %></span>
+      </div>
     </div>
-  <% end %>
+    <div class="hant-footer">
+      <span class="timestamp">
+        <%= time_ago_in_words(hant.created_at) %><%= t('.ago', default: ' ago.') %>
+      </span>
+      <% if current_user == hant.user %>
+        <span class="delete-hant">
+            <%= link_to t('.delete'), hant, method: :delete,
+                data: { confirm: t('js.sure', default: 'Are you sure?') } %>
+        </span>
+        <% end %>
+    </div>
+  </div>
 </div>
+
+<script>
+$('#study_rank_<%= hant_counter %>').raty({
+    size      : 24,
+    score     : <%= hant.study_evaluation %>,
+    starOff   : '/assets/star-off.png',
+    starOn    : '/assets/star-on.png',
+    starHalf  : '/assets/star-half.png',
+    hints     : null,
+    readOnly  : true,
+    noRatedMsg: '0'
+});
+
+$('#pc_rank_<%= hant_counter %>').raty({
+    size      : 24,
+    score     : <%= hant.pc_evaluation %>,
+    starOff   : '/assets/star-off.png',
+    starOn    : '/assets/star-on.png',
+    starHalf  : '/assets/star-half.png',
+    hints     : null,
+    readOnly  : true,
+    noRatedMsg: '0'
+});
+
+$().ready(function() {
+  $('#content_<%= hant_counter %>').jTruncSubstr({
+      length      : 50,      // 表示する文字数
+      minTrail    : 10,       // 省略文字の最低文字数
+      moreText    : "<%= t('js.more', :default => 'More') %>",  // 省略部分を表示するリンクの文字
+      lessText    : "",      // 省略部分を非表示にするリンクの文字
+      ellipsisText: "...",   // 省略部分をあらわす文字
+      moreAni     : "fast",  // 折り広げるスピード
+      lessAni     : "fast"   // 折り畳むスピード
+  });
+});
+</script>
