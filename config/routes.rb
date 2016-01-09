@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope "(:locale)" do
+  scope "(:locale)", locale: /ja|en/ do
     root 'welcome#index'
     devise_for :users, :controllers => {
       :registrations => 'users/registrations'
