@@ -1,0 +1,59 @@
+ja:
+  activerecord:
+    attributes:
+      space:
+        title: 名称
+        description: URL
+        address: 住所
+        category: カテゴリー
+        latitude: 緯度
+        longitude: 経度
+      hant:
+        one_phrase: ハントタイトル
+        content: コメント
+        study_evaluation: 勉強スペース評価
+        pc_evaluation: パソコンスペース評価
+  spaces:
+    new:
+      map_title: 緑のピンを動かして好きなスペースをハントしよう！
+    space_form:
+      address: 住所
+      title: 名称（必須）
+      description: URL（任意）
+      category: カテゴリー
+      latitude: 緯度
+      longitude: 経度
+      hant_space: スペースをハント
+      cafe: カフェ
+      library: 図書館
+      original: オリジナルスペース（その他）
+      space_form: スペース情報
+      hanting: "ハント中..."
+      edit_space: スペースを編集
+      editing: "編集中..."
+      lat_lon_error: と経度の組み合わせはすでに存在します
+    show:
+      map_title: スペースの地図表示
+      review_form: レビューフォーム
+    space_show:
+      address: 住所
+      category: カテゴリー
+      cafe: カフェ
+      library: 図書館
+      original: オリジナルスペース（その他）
+      space_form: スペース情報
+      study_evaluation: 勉強スペース評価
+      pc_evaluation: パソコンスペース評価
+      website: 関連ＨＰ
+      review_form: レビューする
+      edit_space: スペースを編集
+      reviewed: レビュー済み
+      hanter: スペースハンター
+      updated: ' 更新'
+      at: ''
+    spaces_show:
+      cafe: カフェ
+      library: 図書館
+      original: オリジナルスペース（その他）
+      study_evaluation: 勉強スペース評価
+      pc_evaluation: パソコンスペース評価

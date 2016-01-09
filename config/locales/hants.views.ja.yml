@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    attributes:
+      hant:
+        one_phrase: ハントタイトル
+        content: コメント
+        study_evaluation: 勉強スペース評価
+        pc_evaluation: パソコンスペース評価
+  hants:
+    hant_form:
+      one_phrase: レビュータイトル（50字以内）
+      content_etc: 静かさ、費用、コンセント・Wi-Fiの有無など
+      study_evaluation: 勉強スペース評価
+      pc_evaluation: パソコンスペース評価
+      review: レビュー
+      reviewing: "レビュー中..."
+      close: 閉じる
+      Space: スペース
+    hant:
+      ago: 前
+      delete: 削除
+      study_evaluation: 勉強スペース評価
+      pc_evaluation: パソコンスペース評価
