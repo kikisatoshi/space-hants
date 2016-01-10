@@ -224,13 +224,11 @@ en:
         password_confirmation: Password Confirmation
       space:
         title: Title
-        description: URL
         address: Address
         category: Category
         latitude: Latitude
         longitude: Longitude
       hant:
-        one_phrase: Review title
         content: Comment
         study_evaluation: Rating for Study
         pc_evaluation: Rating for PC
@@ -240,7 +238,6 @@ en:
     space_form:
       space_form: Space Information
       title: Title(Required)
-      description: URL(Required)
       cafe: Cafe
       library: Library
       original: Original Space(Others)
@@ -258,6 +255,7 @@ en:
       original: Original Space(Others)
       study_evaluation: Rating for Study
       pc_evaluation: Rating for PC
+      reviews: Reviews
       website: Website
       hanter: Space Hanter
       not_exist: User doesn't exist.
@@ -272,6 +270,7 @@ en:
       original: Original Space(Others)
       study_evaluation: Rating for Study
       pc_evaluation: Rating for PC
+      reviews: Reviews
   hants:
     hant_form:
       study_evaluation: Rating for Study
@@ -298,7 +297,7 @@ en:
   js:
     cancel: Cancel
     sure: Are you sure?
-    failed_review: You failed to review. Please enter comment.
+    failed_review: "You failed to review. Please enter comment(less than 160 characters)."
     not_yet: Not rated yet!
     reviewed: You reviewed.
     review_deleted: Review was deleted.
@@ -310,3 +309,4 @@ en:
     library: Library
     original: Original Space(Others)
     more: More
+    hide: Hide

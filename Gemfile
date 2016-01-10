@@ -47,6 +47,7 @@ gem "geocoder"
 gem 'google_places'
 
 gem 'jquery-turbolinks'
+gem 'readmorejs-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

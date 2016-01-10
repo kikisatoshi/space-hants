@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="form-group">
-        <span class="hant_content" id="content_<%= hant_counter %>"><%= hant.content %></span>
+        <article><%= simple_format(h hant.content) %></article>
       </div>
     </div>
     <div class="hant-footer">
@@ -69,14 +69,12 @@ $('#pc_rank_<%= hant_counter %>').raty({
 });
 
 $().ready(function() {
-  $('#content_<%= hant_counter %>').jTruncSubstr({
-      length      : 50,      // 表示する文字数
-      minTrail    : 10,       // 省略文字の最低文字数
-      moreText    : "<%= t('js.more', :default => 'More') %>",  // 省略部分を表示するリンクの文字
-      lessText    : "",      // 省略部分を非表示にするリンクの文字
-      ellipsisText: "...",   // 省略部分をあらわす文字
-      moreAni     : "fast",  // 折り広げるスピード
-      lessAni     : "fast"   // 折り畳むスピード
+  $('article').readmore({
+      speed: 100,
+      collapsedHeight: 70,
+      heightMargin: 20,
+      moreLink: '<a href="#"><%= t('js.more', :default => 'More') %></a>',
+      lessLink: '<a href="#"><%= t('js.hide', :default => 'Hide') %></a>',
   });
 });
 </script>

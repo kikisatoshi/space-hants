@@ -232,13 +232,11 @@ ja:
         password_confirmation: 再入力パスワード
       space:
         title: 名称
-        description: URL
         address: 住所
         category: カテゴリー
         latitude: 緯度
         longitude: 経度
       hant:
-        one_phrase: レビュータイトル
         content: コメント
         study_evaluation: 勉強スペース評価
         pc_evaluation: パソコンスペース評価
@@ -248,7 +246,6 @@ ja:
     space_form:
       space_form: スペース情報
       title: 名称（必須）
-      description: URL（任意）
       cafe: カフェ
       library: 図書館
       original: オリジナルスペース（その他）
@@ -266,6 +263,7 @@ ja:
       original: オリジナルスペース（その他）
       study_evaluation: 勉強スペース評価
       pc_evaluation: パソコンスペース評価
+      reviews: 件のレビュー
       website: 関連ＨＰ
       hanter: スペースハンター
       not_exist: ユーザーが存在しません
@@ -280,11 +278,11 @@ ja:
       original: オリジナルスペース（その他）
       study_evaluation: 勉強スペース評価
       pc_evaluation: パソコンスペース評価
+      reviews: 件のレビュー
   hants:
     hant_form:
       study_evaluation: 勉強スペース評価
       pc_evaluation: パソコンスペース評価
-      one_phrase: レビュータイトル（50字以内）
       content_etc: 静かさ、費用、コンセント・Wi-Fiの有無など
       review: レビュー
       reviewing: "レビュー中..."

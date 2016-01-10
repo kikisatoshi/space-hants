@@ -1,8 +1,6 @@
 class Space < ActiveRecord::Base
   validates :address, presence: true
   validates :title, presence: true, length: { maximum: 50 }
-  validates :description, allow_blank: true,
-            format: /\A#{URI::regexp(%w(http https))}\z/, length: { maximum: 2048 }
   validates :category, presence: true
   validates :latitude, presence: true,
                        uniqueness: {

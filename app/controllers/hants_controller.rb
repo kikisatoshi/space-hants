@@ -34,7 +34,7 @@ class HantsController < ApplicationController
   end
 
   def hant_params
-    params.require(:hant).permit(:one_phrase, :content, :study_evaluation,
+    params.require(:hant).permit(:content, :study_evaluation,
       :pc_evaluation, :space_id, :user_id)
   end
 end

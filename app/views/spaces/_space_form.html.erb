@@ -28,17 +28,11 @@
             autocomplete: "off" %>
       </div>
       <div class="form-group">
-        <%= f.label :description, "URL" %>
-        <%= f.url_field :description, class: "form-control",
-            placeholder: t('.description', :default => "URL"),
-            autocomplete: "off" %>
-      </div>
-      <div class="form-group">
         <%= f.label :category %>&emsp;
         <%= f.select :category, [[t('.cafe', :default => "Cafe"), "cafe"],
             [t('.library', :default => "Library"), "library"],
             [t('.original', :default => "Original Space(Others)"), "original"]] %>
-      </div>
+      </div><br>
       <% if request.path.include?('/spaces/new') || request.path==('/spaces') || request.path==('/en/spaces') || request.path==('/ja/spaces') %>
         <div class="submit-group">
           <%= f.submit t('.hant_space', :default => "Create"), 

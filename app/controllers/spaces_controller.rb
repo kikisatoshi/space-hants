@@ -109,7 +109,7 @@ class SpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
-      params.require(:space).permit(:title, :description, :address, :latitude, :longitude, :category)
+      params.require(:space).permit(:title, :address, :latitude, :longitude, :category)
     end
 
     def authenticate_space_user!
@@ -130,7 +130,8 @@ class SpacesController < ApplicationController
       return "<span class='glyphicon #{gliyphicon}' aria-hidden='true'></span>
               #{t("js.#{space.category}")}<br>
               #{space.title}<br>
-              <a class='btn btn-success btn-xs' href='/spaces/#{space.id}'>
+              <a class='btn btn-success btn-xs'
+              href='#{"/#{I18n.locale}" unless I18n.locale==I18n.default_locale}/spaces/#{space.id}'>
                 #{t('js.detail', default: 'Watch the detail')}
               </a>"
     end

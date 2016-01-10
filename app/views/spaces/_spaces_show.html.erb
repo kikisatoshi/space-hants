@@ -4,6 +4,7 @@
     <div class="spacebox-inner">
       <div class="form-group">
         <strong><%= t(".#{space.category}") %></strong>
+        <span id="hant-count"><%= hants.count %><%= t('.reviews', default: "reviews") %></span>
       </div>
       <div class="form-group">
         <label><%= t('.study_evaluation', :default => "Rating for Study") %></label>
