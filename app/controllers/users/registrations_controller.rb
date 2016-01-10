@@ -23,9 +23,12 @@ before_action :configure_account_update_params, only: [:update]
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    if Hant.exists?(:user => current_user)
+      Hant.where(user: current_user).delete_all
+    end
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

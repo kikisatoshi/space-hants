@@ -1,5 +1,4 @@
 <%= form_for(@hant) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">
     <%= f.label t('.study_evaluation', :default => "Rating for study") %>
     &emsp;<span id="my_study_rank"></span>

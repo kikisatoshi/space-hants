@@ -33,9 +33,9 @@
 				if(splitLocation != -1) {
 					// truncate tip
 					var str1 = body.substring(0, splitLocation+1);
-					str1 = str1.replace(/\n/g,"<br>").replace(/\r/g,"");
+					str1 = str1.replace(/\n|\r/g,"<br>");
 					var str2 = body.substring(splitLocation+1, body.length);
-					str2 = str2.replace(/\n/g,"<br>").replace(/\r/g,"");
+					str2 = str2.replace(/\n|\r/g,"<br>");
 					obj.html(str1 + '<span class="truncate_ellipsis">' + options.ellipsisText + 
 						'</span>' + '<span class="truncate_more">' + str2 + '</span>');
 					obj.find('.truncate_more').css("display", "none");
@@ -73,6 +73,8 @@
 						return false;
 				  	});
 				}
+			} else {
+				obj.html(body.replace(/\n|\r/g,"<br>"));
 			} // end if
 			
 		});

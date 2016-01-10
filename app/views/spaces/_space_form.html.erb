@@ -48,6 +48,8 @@
         <div class="submit-group">
           <%= f.submit t('.edit', :default => "Edit"), 
               class: "btn btn-success", data: { disable_with: t('.editing', :default => "Now Editing...")} %>
+          <%= link_to t('.delete', :default => "Delete"), @space, method: :delete,
+              data: { confirm: 'Are you sure?' }, id: "delete_link" %>
         </div>
       <% end %>
     <% end %>

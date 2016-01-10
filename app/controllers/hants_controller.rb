@@ -3,7 +3,7 @@ class HantsController < ApplicationController
   before_action :set_hant, only: [:destroy]
 
   def index
-    redirect_to controller: 'spaces', action: 'index'
+    redirect_to root_url
   end
 
   def create
@@ -12,19 +12,10 @@ class HantsController < ApplicationController
     @hant.pc_evaluation = 0 if @hant.pc_evaluation.blank?
     if @hant.save
       flash[:success] = t('js.reviewed', default: 'You reviewed.')
-      redirect_to controller: 'spaces', action: 'show', id: @hant.space_id
     else
-      flash.now[:danger] = t('js.failed_review', default: 'You failed to review.')
-      @space = Space.find(@hant.space_id)
-      @hants = Hant.where(space_id: @space.id).order(created_at: :desc)
-      @hash = Gmaps4rails.build_markers(@space) do |space, marker|
-        marker.lat space.latitude
-        marker.lng space.longitude
-        marker.title space.title
-        marker.json({title: space.title})
-      end
-      render 'spaces/show'
+      flash[:danger] = t('js.failed_review', default: 'You failed to review. Please enter comment.')
     end
+    redirect_to controller: 'spaces', action: 'show', id: @hant.space_id
   end
 
   def destroy

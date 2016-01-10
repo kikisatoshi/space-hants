@@ -248,6 +248,7 @@ en:
       hanting: "Hanting..."
       edit: Edit
       editing: "Editing..."
+      delete: Delete
     show:
       map_title: Space Display
       review_form: Review Form
@@ -259,6 +260,7 @@ en:
       pc_evaluation: Rating for PC
       website: Website
       hanter: Space Hanter
+      not_exist: User doesn't exist.
       at: Updated at
       reviewed: Already Reviewed
       review_form: Review Form
@@ -296,7 +298,7 @@ en:
   js:
     cancel: Cancel
     sure: Are you sure?
-    failed_review: You failed to review.
+    failed_review: You failed to review. Please enter comment.
     not_yet: Not rated yet!
     reviewed: You reviewed.
     review_deleted: Review was deleted.

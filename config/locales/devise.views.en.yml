@@ -1,0 +1,40 @@
+en:
+  activerecord:
+    attributes:
+      user:
+        current_password: Current Password
+        email: Email
+        password: Password
+        password_confirmation: Password Confirmation
+        remember_me: Remember me
+    models:
+      user: User
+  devise:
+    passwords:
+      new:
+        email: Email
+    registrations:
+      edit:
+        name: Name
+        email: Email
+        password: "Password (%{resource})"
+        password_confirmation: Password Confirmation
+        current_password: Current Password
+        hometown: Hometown
+        profile: Profile
+      new:
+        sign_up: Sign up
+        do_sign_up: Do sign up
+        name: Name
+        email: Email
+        password: "Password (more than %{min} characters but less than %{max})"
+        password_confirmation: Password Confirmation
+    sessions:
+      new:
+        sign_in: Sign in
+        email: Emain
+        password: Password
+    shared:
+      links:
+        have_account: ""
+        have_not_account: ""

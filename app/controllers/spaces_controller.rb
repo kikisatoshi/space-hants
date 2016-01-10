@@ -1,12 +1,12 @@
 class SpacesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_space, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_space_user!, only: [:edit, :update, :destroy]
 
   # GET /spaces
   # GET /spaces.json
   def index
-    @spaces = Space.all
-    # redirect_to "/map"
+    redirect_to controller: 'spaces', action: 'new'
   end
 
   # GET /spaces/1
@@ -20,6 +20,7 @@ class SpacesController < ApplicationController
       marker.title space.title
       marker.json({title: space.title})
     end
+    @user_model = User
   end
 
   def list
@@ -87,6 +88,9 @@ class SpacesController < ApplicationController
   # DELETE /spaces/1.json
   def destroy
     @space.destroy
+    if Hant.exists?(:space => @space)
+      Hant.where(space: @space).delete_all
+    end
     respond_to do |format|
       format.html { redirect_to spaces_url, flash:{success: t('js.space_deleted', default: 'Space was deleted.')} }
       format.json { head :no_content }
@@ -96,12 +100,22 @@ class SpacesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_space
-      @space = Space.find(params[:id])
+      if Space.exists?(:id => params[:id])
+        @space = Space.find(params[:id])
+      else
+        redirect_to controller: 'spaces', action: 'new'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
       params.require(:space).permit(:title, :description, :address, :latitude, :longitude, :category)
+    end
+
+    def authenticate_space_user!
+      if @space.user != current_user
+        redirect_to controller: 'spaces', action: 'show', id: @space.id
+      end
     end
 
     def get_marker_info(space)

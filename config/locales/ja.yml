@@ -256,6 +256,7 @@ ja:
       hanting: "ハント中..."
       edit: 編集
       editing: "編集中..."
+      delete: 削除
     show:
       map_title: スペースの地図表示
       review_form: レビューフォーム
@@ -267,6 +268,7 @@ ja:
       pc_evaluation: パソコンスペース評価
       website: 関連ＨＰ
       hanter: スペースハンター
+      not_exist: ユーザーが存在しません
       at: ''
       reviewed: レビュー済み
       review_form: レビューする
