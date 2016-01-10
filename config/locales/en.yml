@@ -209,7 +209,102 @@ en:
       short: "%d %b %H:%M"
     pm: pm
 
+  activerecord:
+    models:
+      hant: Review
+      user: User
+      space: Space
+    attributes:
+      user:
+        name: Name
+        email: Email
+        location: Location
+        profile: Profile
+        password: Password
+        password_confirmation: Password Confirmation
+      space:
+        title: Title
+        description: URL
+        address: Address
+        category: Category
+        latitude: Latitude
+        longitude: Longitude
+      hant:
+        one_phrase: Review title
+        content: Comment
+        study_evaluation: Rating for Study
+        pc_evaluation: Rating for PC
+  spaces:
+    new:
+      map_title: Let's move a green pin and hant your space!
+    space_form:
+      space_form: Space Information
+      title: Title(Required)
+      description: URL(Required)
+      cafe: Cafe
+      library: Library
+      original: Original Space(Others)
+      hant_space: Hant this space!
+      hanting: "Hanting..."
+      edit: Edit
+      editing: "Editing..."
+    show:
+      map_title: Space Display
+      review_form: Review Form
+    space_show:
+      cafe: Cafe
+      library: Library
+      original: Original Space(Others)
+      study_evaluation: Rating for Study
+      pc_evaluation: Rating for PC
+      website: Website
+      hanter: Space Hanter
+      at: Updated at
+      reviewed: Already Reviewed
+      review_form: Review Form
+      edit_space: Edit Space
+      updated: ''
+    spaces_show:
+      cafe: Cafe
+      library: Library
+      original: Original Space(Others)
+      study_evaluation: Rating for Study
+      pc_evaluation: Rating for PC
+  hants:
+    hant_form:
+      study_evaluation: Rating for Study
+      pc_evaluation: Rating for PC
+      content_etc: ''
+      review: Review
+      reviewing: "Reviewing..."
+      close: Close
+    hant:
+      ago: ' ago.'
+      delete: Delete
+      study_evaluation: Rating for Study
+      pc_evaluation: Rating for PC
+  layouts:
+    header:
+      sign_up: Sign up
+      sign_in: Sign in
+      map: Map
+      cafe: Cafe
+      library: Library
+      original: Original Space
+      settings: Account Settings
+      logout: Log out
   js:
+    cancel: Cancel
+    sure: Are you sure?
+    failed_review: You failed to review.
+    not_yet: Not rated yet!
+    reviewed: You reviewed.
+    review_deleted: Review was deleted.
+    hanted: Space was hanted.
+    updated: Space was updated.
+    space_deleted: Space was deleted.
+    detail: Watch the details
     cafe: Cafe
     library: Library
-    original: "Original Space(Others)"
+    original: Original Space(Others)
+    more: More
