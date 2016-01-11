@@ -1,0 +1,7 @@
+<div id="like_form_<%= hant.id %>">
+  <% if current_user.liking?(hant) %>
+    <%= render 'hants/unlike', hant: hant %>
+  <% else %>
+    <%= render 'hants/like', hant: hant %>
+  <% end %>
+</div>

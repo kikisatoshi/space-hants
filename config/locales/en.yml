@@ -279,8 +279,8 @@ en:
     hant:
       ago: ' ago.'
       delete: Delete
-      study_evaluation: Rating for Study
-      pc_evaluation: Rating for PC
+      study_evaluation: Study Rating
+      pc_evaluation: PC Rating
   layouts:
     header:
       sign_up: Sign up
@@ -308,3 +308,5 @@ en:
     original: Original Space
     more: More
     hide: Hide
+    study_evaluation: Study Rating
+    pc_evaluation: PC Rating

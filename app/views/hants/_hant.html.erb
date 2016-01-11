@@ -17,14 +17,19 @@
           </div>
         </span>
       </div>
-      <div class="form-group">
-        <div class="study_rank">
-          <%= t('.study_evaluation', :default => "Rating for Study") %>
-          &emsp;<span id="study_rank_<%= hant_counter %>"></span>
+      <div class="row">
+        <div class="form-group col-xs-9">
+          <div class="study_rank">
+            <%= t('.study_evaluation', :default => "Study Rating") %>
+            &ensp;<span id="study_rank_<%= hant_counter %>"></span>
+          </div>
+          <div class="pc_rank">
+            <%= t('.pc_evaluation', :default => "PC Rating") %>
+            &ensp;<span id="pc_rank_<%= hant_counter %>"></span>
+          </div>
         </div>
-        <div class="pc_rank form-group">
-          <%= t('.pc_evaluation', :default => "Rating for PC") %>
-          &emsp;<span id="pc_rank_<%= hant_counter %>"></span>
+        <div class="form-group col-xs-3">
+          <%= render 'hants/like_form', hant: hant %>
         </div>
       </div>
       <div class="form-group">

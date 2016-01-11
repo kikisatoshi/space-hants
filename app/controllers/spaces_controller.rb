@@ -13,14 +13,13 @@ class SpacesController < ApplicationController
   # GET /spaces/1.json
   def show
     @hant = current_user.hants.build
-    @hants = Hant.where(space_id: @space.id).order(created_at: :desc)
+    @hants = @space.hants.order(created_at: :desc)
     @hash = Gmaps4rails.build_markers(@space) do |space, marker|
       marker.lat space.latitude
       marker.lng space.longitude
       marker.title space.title
       marker.json({title: space.title})
     end
-    @user_model = User
   end
 
   def list
@@ -88,8 +87,8 @@ class SpacesController < ApplicationController
   # DELETE /spaces/1.json
   def destroy
     @space.destroy
-    if Hant.exists?(:space => @space)
-      Hant.where(space: @space).delete_all
+    if @space.hants.present?
+      @space.hants.delete_all
     end
     respond_to do |format|
       format.html { redirect_to spaces_url, flash:{success: t('js.space_deleted', default: 'Space was deleted.')} }
@@ -131,7 +130,7 @@ class SpacesController < ApplicationController
               #{t("js.#{space.category}")}<br>
               #{space.title}<br>
               <a class='btn btn-success btn-xs'
-              href='#{"/#{I18n.locale}" unless I18n.locale==I18n.default_locale}/spaces/#{space.id}'>
+                href='#{"/#{I18n.locale}" unless I18n.locale==I18n.default_locale}/spaces/#{space.id}'>
                 #{t('js.detail', default: 'Watch the detail')}
               </a>"
     end

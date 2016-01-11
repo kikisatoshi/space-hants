@@ -37,7 +37,21 @@
         color: #808080;
       }
     }
-    .study_rank {
+    .btn-xs {
+      margin: 10px 0 0;
+      .red {
+        color: red;
+        font-size: 24px;
+      }
+      .black {
+        color: black;
+        font-size: 24px;
+      }
+    }
+    .like-count {
+      font-size: 12px;
+    }
+    .study_rank, .pc_rank {
       margin: 10px 0;
     }
     // .img-wrap {

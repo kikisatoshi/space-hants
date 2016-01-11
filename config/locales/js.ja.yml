@@ -7,7 +7,7 @@ ja:
     good: 良い
     gorgeous: 大変良い
     sure: よろしいですか？
-    failed_review: "レビューに失敗しました。コメントは160字以内で入力してください。"
+    failed_review: "レビューに失敗しました。コメントは500字以内で入力してください。"
     not_yet: 未評価
     reviewed: レビューしました。
     review_deleted: レビューが削除されました。
@@ -20,3 +20,5 @@ ja:
     original: オリジナルスペース
     more: 続きを読む
     hide: 閉じる
+    study_evaluation: 勉強スペース
+    pc_evaluation: ＰＣスペース

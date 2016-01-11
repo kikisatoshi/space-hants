@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
     resources :spaces
     resources :hants, only: [:index, :create, :destroy]
+    resources :hanterships, only: [:create, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

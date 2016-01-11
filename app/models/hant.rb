@@ -7,5 +7,5 @@ class Hant < ActiveRecord::Base
   validates :space_id, presence: true, uniqueness: { scope: [:user_id] }
 
   has_many :hanterships  , foreign_key: "hant_id" , dependent: :destroy
-  has_many :liked_users , through: :hanterships
+  has_many :liked_users , through: :hanterships, source: :user
 end

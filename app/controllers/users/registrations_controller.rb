@@ -24,8 +24,8 @@ before_action :configure_account_update_params, only: [:update]
 
   # DELETE /resource
   def destroy
-    if Hant.exists?(:user => current_user)
-      Hant.where(user: current_user).delete_all
+    if current_user.hants.present?
+      current_user.hants.delete_all
     end
     super
   end

@@ -12,10 +12,19 @@ class HantsController < ApplicationController
     @hant.pc_evaluation = 0 if @hant.pc_evaluation.blank?
     if @hant.save
       flash[:success] = t('js.reviewed', default: 'You reviewed.')
+      redirect_to @hant.space
     else
       flash[:danger] = t('js.failed_review', default: 'You failed to review. Please enter comment.')
+      @space = Space.find(@hant.space_id)
+      @hants = @space.hants.order(created_at: :desc)
+      @hash = Gmaps4rails.build_markers(@space) do |space, marker|
+        marker.lat space.latitude
+        marker.lng space.longitude
+        marker.title space.title
+        marker.json({title: space.title})
+      end
+      render 'spaces/show'
     end
-    redirect_to @hant.space
   end
 
   def destroy

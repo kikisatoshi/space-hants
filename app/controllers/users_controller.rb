@@ -7,8 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @spaces = Space.where(user_id: @user.id).order(created_at: :desc)
-    @hant_model = Hant
+    @spaces = @user.spaces.order(created_at: :desc)
   end
 
   private

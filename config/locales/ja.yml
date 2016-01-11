@@ -287,8 +287,8 @@ ja:
     hant:
       ago: 前
       delete: 削除
-      study_evaluation: 勉強スペース評価
-      pc_evaluation: パソコンスペース評価
+      study_evaluation: 勉強スペース
+      pc_evaluation: ＰＣスペース
   layouts:
     header:
       sign_up: 新規登録

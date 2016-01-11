@@ -1,0 +1,7 @@
+<%= form_for(current_user.hanterships.build, remote: true) do |f| %>
+  <div><%= hidden_field_tag :hant_id, hant.id %></div>
+  <%= button_tag( class: "btn btn-xs") do %>
+    <%= content_tag :span, "", class: "glyphicon glyphicon-thumbs-up black", "aria-hidden"=> "true" %>
+  <% end %>
+  <div class="like-count"><%= pluralize(hant.liked_users.count, " Like") %></div>
+<% end %>
