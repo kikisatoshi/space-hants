@@ -226,10 +226,12 @@ ja:
       user:
         name: 名前
         email: メールアドレス
-        location: 現在地
+        hometown: 居住地
         profile: プロフィール
         password: パスワード
         password_confirmation: 再入力パスワード
+        current_password: 現在のパスワード
+        remember_me: ログインを保存
       space:
         title: 名称
         address: 住所
@@ -249,7 +251,7 @@ ja:
       cafe: カフェ
       library: 図書館
       original: オリジナルスペース（その他）
-      hant_space: スペースをハント
+      hant_space: このスペースをハント
       hanting: "ハント中..."
       edit: 編集
       editing: "編集中..."
@@ -258,9 +260,6 @@ ja:
       map_title: スペースの地図表示
       review_form: レビューフォーム
     space_show:
-      cafe: カフェ
-      library: 図書館
-      original: オリジナルスペース（その他）
       study_evaluation: 勉強スペース評価
       pc_evaluation: パソコンスペース評価
       reviews: 件のレビュー
@@ -273,9 +272,6 @@ ja:
       edit_space: スペースを編集
       updated: ' 更新'
     spaces_show:
-      cafe: カフェ
-      library: 図書館
-      original: オリジナルスペース（その他）
       study_evaluation: 勉強スペース評価
       pc_evaluation: パソコンスペース評価
       reviews: 件のレビュー
@@ -283,6 +279,7 @@ ja:
     hant_form:
       study_evaluation: 勉強スペース評価
       pc_evaluation: パソコンスペース評価
+      comment: コメント（500字以内）
       content_etc: 静かさ、費用、コンセント・Wi-Fiの有無など
       review: レビュー
       reviewing: "レビュー中..."
@@ -300,5 +297,6 @@ ja:
       cafe: カフェ
       library: 図書館
       original: オリジナルスペース
+      mypage: マイページ
       settings: アカウント設定
       logout: ログアウト

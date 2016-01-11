@@ -15,13 +15,13 @@ class HantsController < ApplicationController
     else
       flash[:danger] = t('js.failed_review', default: 'You failed to review. Please enter comment.')
     end
-    redirect_to controller: 'spaces', action: 'show', id: @hant.space_id
+    redirect_to @hant.space
   end
 
   def destroy
     @hant.destroy
     flash[:success] = t('js.review_deleted', default: 'Review was deleted.')
-    redirect_to controller: 'spaces', action: 'show', id: @hant.space_id
+    redirect_to @hant.space
   end
 
   private

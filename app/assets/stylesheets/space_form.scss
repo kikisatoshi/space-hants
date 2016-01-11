@@ -5,11 +5,22 @@
 .spacebox {
   float: left;
   width: 390px;
-  margin: 15px 5px;
+  margin: 15px 5px 0 5px;
   border: 1px solid #ddd;
   background: #fff;
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   border-radius: 3px;
+  .category-logo {
+    margin: 0;
+    width: 390px;
+    height: 70px;
+    background-size: contain;
+    white-space: nowrap;
+    text-indent: 99999px;
+    border: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
   .spacebox-title {
     margin: 0;
     height: 55px;
@@ -17,8 +28,6 @@
     font-weight: normal;
     background: #fafafa;
     border: none;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
   }
   .spacebox-detail-title{
     margin: 0;
@@ -60,9 +69,6 @@
     .gravatar {
       margin-left: 5px;
     }
-    #hant-count {
-      margin-left: 20px;
-    }
   }
   #edit-btn {
     margin-left: 15px;
@@ -70,7 +76,7 @@
 }
 .spaces-box {
   float: left;
-  min-height: 380px;
+  min-height: 460px;
 }
 
 .edit-spacebox {

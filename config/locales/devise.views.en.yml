@@ -1,14 +1,4 @@
 en:
-  activerecord:
-    attributes:
-      user:
-        current_password: Current Password
-        email: Email
-        password: Password
-        password_confirmation: Password Confirmation
-        remember_me: Remember me
-    models:
-      user: User
   devise:
     passwords:
       new:
@@ -21,7 +11,7 @@ en:
         password_confirmation: Password Confirmation
         current_password: Current Password
         hometown: Hometown
-        profile: Profile
+        profile: "Profile (less than 160 characters)"
       new:
         sign_up: Sign up
         do_sign_up: Do sign up

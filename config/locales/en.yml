@@ -218,10 +218,12 @@ en:
       user:
         name: Name
         email: Email
-        location: Location
+        hometown: Hometown
         profile: Profile
         password: Password
         password_confirmation: Password Confirmation
+        current_password: Current Password
+        remember_me: Remember me
       space:
         title: Title
         address: Address
@@ -250,9 +252,6 @@ en:
       map_title: Space Display
       review_form: Review Form
     space_show:
-      cafe: Cafe
-      library: Library
-      original: Original Space(Others)
       study_evaluation: Rating for Study
       pc_evaluation: Rating for PC
       reviews: Reviews
@@ -265,9 +264,6 @@ en:
       edit_space: Edit Space
       updated: ''
     spaces_show:
-      cafe: Cafe
-      library: Library
-      original: Original Space(Others)
       study_evaluation: Rating for Study
       pc_evaluation: Rating for PC
       reviews: Reviews
@@ -275,6 +271,7 @@ en:
     hant_form:
       study_evaluation: Rating for Study
       pc_evaluation: Rating for PC
+      comment: Comment (less than 500 characters)
       content_etc: ''
       review: Review
       reviewing: "Reviewing..."
@@ -292,12 +289,13 @@ en:
       cafe: Cafe
       library: Library
       original: Original Space
+      mypage: My Page
       settings: Account Settings
       logout: Log out
   js:
     cancel: Cancel
     sure: Are you sure?
-    failed_review: "You failed to review. Please enter comment(less than 160 characters)."
+    failed_review: "You failed to review. Comment is too long (maximum is 500 characters)."
     not_yet: Not rated yet!
     reviewed: You reviewed.
     review_deleted: Review was deleted.
@@ -307,6 +305,6 @@ en:
     detail: Watch the details
     cafe: Cafe
     library: Library
-    original: Original Space(Others)
+    original: Original Space
     more: More
     hide: Hide

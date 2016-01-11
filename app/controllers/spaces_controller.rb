@@ -114,7 +114,7 @@ class SpacesController < ApplicationController
 
     def authenticate_space_user!
       if @space.user != current_user
-        redirect_to controller: 'spaces', action: 'show', id: @space.id
+        redirect_to @space
       end
     end
 

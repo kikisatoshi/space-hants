@@ -1,9 +1,22 @@
 <div class="user-profile">
-  <div class="icon">
-    <%= gravatar_for user, size: 100 %>
-  </div>
-  <div class="name">
-    <h1><%= user.name %><h1>
+  <div class="user-profile-box row">
+    <div class="icon col-xs-2">
+      <%= gravatar_for user, size: 100 %>
+    </div>
+    <div class="profile-inner-box col-xs-10">
+      <div class="name">
+        <h2><%= user.name %><h2>
+      </div>
+      <div class="hometown">
+        <h5>
+          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+          <%= user.hometown %>
+        <h5>
+      </div>
+      <div class="profile">
+        <article><%= simple_format(h user.profile) %></article>
+      </div>
+    </div>
   </div>
   <!--<div class="status">-->
   <!--  <ul>-->
@@ -36,3 +49,15 @@
   <!--  <= render 'follow_form' if logged_in? && @user != current_user %>-->
   </div>
 </div>
+
+<script>
+$().ready(function() {
+  $('article').readmore({
+      speed: 100,
+      collapsedHeight: 70,
+      heightMargin: 20,
+      moreLink: '<a href="#"><%= t('js.more', :default => 'More') %></a>',
+      lessLink: '<a href="#"><%= t('js.hide', :default => 'Hide') %></a>',
+  });
+});
+</script>
