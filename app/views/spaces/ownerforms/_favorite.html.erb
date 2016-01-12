@@ -1,0 +1,7 @@
+<%= link_to ownerships_path(space_id: space.id, type: "Favorite"),
+                :class => "btn-favorite btn btn-warning btn-block",
+                :remote => true,
+                :method => :post do %>
+  <span class="glyphicon glyphicon-star"></span>
+  <%= t('js.favorite', default: 'Favorite') %>
+<% end %>

@@ -1,0 +1,7 @@
+<div id="report_form_<%= space.id %>">
+  <% if current_user.report?(space) %>
+    <%= render 'spaces/ownerforms/unreport', space: space %>
+  <% else %>
+    <%= render 'spaces/ownerforms/report', space: space %>
+  <% end %>
+</div>

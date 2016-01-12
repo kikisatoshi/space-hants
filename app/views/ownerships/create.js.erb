@@ -1,0 +1,6 @@
+<% if params[:type] == "Favorite" %>
+  $("#favorite_form_<%= @space.id %>").html("<%= escape_javascript(render('spaces/ownerforms/unfavorite', space: @space)) %>");
+  $("#favorite-count-<%= @space.id %>").replaceWith("<%= escape_javascript(render('spaces/ownerforms/favorite_count', space: @space)) %>");
+<% else %>
+  $("#report_form_<%= @space.id %>").html("<%= escape_javascript(render('spaces/ownerforms/unreport', space: @space)) %>");
+<% end %>

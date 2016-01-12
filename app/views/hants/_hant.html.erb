@@ -4,7 +4,9 @@
     <div class="hant-content">
       <div class="hant-user clearfix">
         <span class="gravatar">
-          <%= link_to gravatar_for(hant.user, size: 50), hant.user %>
+          <% if hant.user.present? %>
+            <%= link_to gravatar_for(hant.user, size: 50), hant.user %>
+          <% end %>
         </span>
         <span class="profile">
           <div class="user-name">
@@ -12,7 +14,7 @@
           </div>
           <div class="hometown">
             <% if hant.user.hometown.blank? %><br><% else %>
-              <%= hant.user.hometown[0, 16] %><% if hant.user.hometown.length > 16 %>...<% end %>
+              <%= hant.user.hometown[0, 15] %><% if hant.user.hometown.length > 15 %>...<% end %>
             <% end %>
           </div>
         </span>
@@ -28,7 +30,7 @@
             &ensp;<span id="pc_rank_<%= hant_counter %>"></span>
           </div>
         </div>
-        <div class="form-group col-xs-3">
+        <div class="form-group like-form col-xs-3">
           <%= render 'hants/like_form', hant: hant %>
         </div>
       </div>

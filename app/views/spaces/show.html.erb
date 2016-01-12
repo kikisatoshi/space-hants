@@ -20,8 +20,16 @@
       <%= render 'spaces/space_show', space: @space, hants: @hants %>
     </section>
   </div>
+  <div class="paginate-group" id="hants-paginate-top">
+    <%= render 'hants/paginate', hants: @hants %>
+  </div>
   <div class="container-inner inner-default clearfix">
+    <div id="hants">
       <%= render @hants %>
+    </div>
+  </div>
+  <div class="paginate-group" id="hants-paginate-bottom">
+    <%= render 'hants/paginate', hants: @hants %>
   </div>
 </div>
 

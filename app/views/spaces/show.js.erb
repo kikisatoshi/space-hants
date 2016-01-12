@@ -1,0 +1,3 @@
+$("#hants").html("<%= escape_javascript(render @hants) %>");
+$("#hants-paginate-top").html("<%= escape_javascript(render 'hants/paginate', hants: @hants) %>");
+$("#hants-paginate-bottom").html("<%= escape_javascript(render 'hants/paginate', hants: @hants) %>");

@@ -254,8 +254,7 @@ en:
     space_show:
       study_evaluation: Rating for Study
       pc_evaluation: Rating for PC
-      reviews: Reviews
-      website: Website
+      review: Review
       hanter: Space Hanter
       not_exist: User doesn't exist.
       at: Updated at
@@ -310,3 +309,9 @@ en:
     hide: Hide
     study_evaluation: Study Rating
     pc_evaluation: PC Rating
+    favorite: Favorite
+    unfavorite: Unfavorite
+    favorites: Favorite
+    report: Report as inappropriate space
+    reported: Reported as inappropriate space
+    space_deleted_by_report: Space was deleted because too many people felt inappropriate.

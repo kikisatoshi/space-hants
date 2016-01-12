@@ -14,3 +14,8 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.plural(/^.*[^A-Za-z]$/, '\0')
+  inflect.singular(/^.*[^A-Za-z]$/, '\0')
+end

@@ -15,7 +15,8 @@
       <span id="<%= space.id %>_pc_hint" class="hint"></span>
     </div>
     <div class="form-group">
-      <span id="hant-count"><%= hants.count %><%= t('.reviews', default: "reviews") %></span>
+      <span id="hant-count"><%= pluralize(hants.total_count, t('.review', default: "review")) %></span>
+      <%= render 'spaces/ownerforms/favorite_count', space: space %>
     </div>
     <div class="form-group">
       <p><%= space.address %></p>
@@ -41,20 +42,24 @@
     <div class="form-group timestamp">
       <%= t('.at', default: "Updated at ") %><%= l space.updated_at %><%= t('.updated', default: "") %>
     </div>
-    <div class="submit-group">
-      <% if space.hants.find_by(user_id: current_user.id) %>
-        <button type='button' class='btn btn-success' disabled=true>
+    <div class="form-group">
+      <%= render 'spaces/ownerforms/favorite_form', space: space %>
+      <% if hants.find_by(user_id: current_user.id) %>
+        <button type='button' class='btn btn-success review-btn' disabled=true>
           <%= t('.reviewed', default: "Already Reviewed") %>
         </button>
       <% else %>
-        <button type='button' class='btn btn-success' data-toggle='modal' data-target='#hantModal'>
+        <button type='button' class='btn btn-success review-btn' data-toggle='modal' data-target='#hantModal'>
           <%= t('.review_form', default: "Review Form") %>
         </button>
       <% end %>
       <% if current_user == space.user %>
         <%= link_to t('.edit_space', default: "Edit Space"), edit_space_path(space),
-            class: 'btn btn-info', id: 'edit-btn' %>
+            class: 'btn btn-info edit-btn' %>
       <% end %>
+    </div>
+    <div class="form-group">
+      <%= render 'spaces/ownerforms/report_form', space: space %>
     </div>
   </div>
 </div>

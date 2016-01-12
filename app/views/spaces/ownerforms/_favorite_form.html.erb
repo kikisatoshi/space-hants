@@ -1,0 +1,7 @@
+<div id="favorite_form_<%= space.id %>">
+  <% if current_user.favorite?(space) %>
+    <%= render 'spaces/ownerforms/unfavorite', space: space %>
+  <% else %>
+    <%= render 'spaces/ownerforms/favorite', space: space %>
+  <% end %>
+</div>

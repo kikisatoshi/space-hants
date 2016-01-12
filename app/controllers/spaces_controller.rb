@@ -13,12 +13,16 @@ class SpacesController < ApplicationController
   # GET /spaces/1.json
   def show
     @hant = current_user.hants.build
-    @hants = @space.hants.order(created_at: :desc)
+    @hants = @space.hants.order(created_at: :desc).page(params[:page])
     @hash = Gmaps4rails.build_markers(@space) do |space, marker|
       marker.lat space.latitude
       marker.lng space.longitude
       marker.title space.title
       marker.json({title: space.title})
+    end
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -88,7 +92,7 @@ class SpacesController < ApplicationController
   def destroy
     @space.destroy
     if @space.hants.present?
-      @space.hants.delete_all
+      @space.hants.destroy_all
     end
     respond_to do |format|
       format.html { redirect_to spaces_url, flash:{success: t('js.space_deleted', default: 'Space was deleted.')} }

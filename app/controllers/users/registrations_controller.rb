@@ -25,7 +25,7 @@ before_action :configure_account_update_params, only: [:update]
   # DELETE /resource
   def destroy
     if current_user.hants.present?
-      current_user.hants.delete_all
+      current_user.hants.destroy_all
     end
     super
   end

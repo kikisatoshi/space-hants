@@ -66,12 +66,26 @@
       color: orange;
       font-size: 22px;
     }
+    .favorite-count {
+      margin-left: 20px;
+    }
     .gravatar {
       margin-left: 5px;
     }
-  }
-  #edit-btn {
-    margin-left: 15px;
+    .btn-favorite {
+      margin: auto;
+      background-color: darken(orange, 2%);
+    }
+    .btn-unfavorite {
+      margin: auto;
+      background-color: rgba(255, 183, 76, 0.8);
+    }
+    .review-btn {
+      margin-left: 0;
+    }
+    .edit-btn {
+      margin-left: 15px;
+    }
   }
 }
 .spaces-box {

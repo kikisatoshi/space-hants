@@ -18,33 +18,27 @@
       </div>
     </div>
   </div>
-  <!--<div class="status">-->
-  <!--  <ul>-->
-  <!--    <li>-->
-  <!--      <div class="status-label">FOLLOWING</div>-->
-  <!--      <div class="status-value">-->
-  <!--        <= user.following_users.count %>-->
-  <!--      </div>-->
-  <!--    </li>-->
-  <!--    <li>-->
-  <!--      <div class="status-label">FOLLOWERS</div>-->
-  <!--      <div id="followers" class="status-value">-->
-  <!--        <= user.followed_users.count %>-->
-  <!--      </div>-->
-  <!--    </li>-->
-  <!--    <li>-->
-  <!--      <div class="status-label">WANT</div>-->
-  <!--      <div id="want_count" class="status-value">-->
-  <!--        <= user.want_items.count %>-->
-  <!--      </div>-->
-  <!--    </li>-->
-  <!--    <li>-->
-  <!--      <div class="status-label">HAVE</div>-->
-  <!--      <div id="have_count" class="status-value">-->
-  <!--        <= user.have_items.count %>-->
-  <!--      </div>-->
-  <!--    </li>-->
-  <!--  </ul>-->
+  <div class="status">
+    <ul>
+      <li>
+        <div class="status-label">HANT</div>
+        <div class="status-value">
+          <%= user.spaces.count %>
+        </div>
+      </li>
+      <li>
+        <div class="status-label">REVIEW</div>
+        <div id="followers" class="status-value">
+          <%= user.hants.count %>
+        </div>
+      </li>
+      <li>
+        <div class="status-label">FAVORITE</div>
+        <div id="want_count" class="status-value">
+          <%= user.favorites.count %>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
 

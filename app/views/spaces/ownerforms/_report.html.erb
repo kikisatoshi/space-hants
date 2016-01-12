@@ -1,0 +1,3 @@
+<%= link_to t('js.report'), ownerships_path(space_id: space.id, type: "Report"),
+                :class => "report", :method => :post,
+                :data => { confirm: t('js.sure', default: 'Are you sure?') } %>

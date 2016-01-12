@@ -22,3 +22,9 @@ ja:
     hide: 閉じる
     study_evaluation: 勉強スペース
     pc_evaluation: ＰＣスペース
+    favorite: お気に入りに登録
+    unfavorite: お気に入りを解除
+    favorites: 人のお気に入り
+    report: 不適切なスペースとして報告
+    reported: 不適切なスペースとして報告しました
+    space_deleted_by_report: 不適切という報告が一定数を超えたためスペースを削除しました。

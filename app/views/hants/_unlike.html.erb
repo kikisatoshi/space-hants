@@ -1,7 +1,4 @@
-<%= form_for(current_user.hanterships.find_by(hant_id: hant.id),
-             html: { method: :delete }, remote: true) do |f| %>
-  <%= button_tag( class: "btn btn-xs") do %>
-    <%= content_tag :span, "", class: "glyphicon glyphicon-thumbs-up red", "aria-hidden"=> "true" %>
-  <% end %>
-  <div class="like-count"><%= pluralize(hant.liked_users.count, " Like") %></div>
-<% end %>
+<%= link_to "", hantership_path(current_user.hanterships.find_by(:hant_id => hant.id), hant_id: hant.id),
+                :class => "glyphicon glyphicon-thumbs-up red",
+                :remote => true, :method => :delete %>
+<div class="like-count"><%= pluralize(hant.liked_users.count, "Like") %></div>

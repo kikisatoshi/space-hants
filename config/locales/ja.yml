@@ -262,8 +262,7 @@ ja:
     space_show:
       study_evaluation: 勉強スペース評価
       pc_evaluation: パソコンスペース評価
-      reviews: 件のレビュー
-      website: 関連ＨＰ
+      review: 件のレビュー
       hanter: スペースハンター
       not_exist: ユーザーが存在しません
       at: ''

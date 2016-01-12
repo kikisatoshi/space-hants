@@ -1,0 +1,7 @@
+<%= link_to ownership_path(current_user.favorites.find_by(:space_id => space.id),
+                space_id: space.id, type: "Favorite"),
+                :class => "btn-unfavorite btn btn-warning btn-block",
+                :remote => true, :method => :delete  do %>
+  <span class="glyphicon glyphicon-star"></span>
+  <%= t('js.unfavorite', default: 'Unfavorite') %>
+<% end %>

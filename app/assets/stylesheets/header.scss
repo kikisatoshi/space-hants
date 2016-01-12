@@ -40,18 +40,18 @@ header {
                 border-radius: 100%;
               }
             }
+            &:link,&:visited,&:active { color: #d3d3d3; }
+            &:hover { color: white; }
           }
-          a:link,a:visited,a:active { color: #d3d3d3; }
-          a:hover { color: white; }
         }
         .dropdown-menu {
-          a:link,a:visited,a:hover,a:active { color: black; }
           li {
             &.divider {
               margin: 0;
             }
             a {
               padding: 10px 15px;
+              &:link,&:visited,&:hover,&:active { color: black; }
             }
           }
         }

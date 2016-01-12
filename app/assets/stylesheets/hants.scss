@@ -37,19 +37,23 @@
         color: #808080;
       }
     }
-    .btn-xs {
-      margin: 10px 0 0;
-      .red {
-        color: red;
-        font-size: 24px;
+    .like-form {
+      margin: 15px 0 -10px 0;
+      .glyphicon {
+        font-size: 26px;
+        text-align: center;
+        &.red {
+          color: red;
+        }
+        &.black {
+          color: black;
+        }
       }
-      .black {
-        color: black;
-        font-size: 24px;
+      .like-count {
+        margin-left: -20px;
+        text-align: center;
+        font-size: 12px;
       }
-    }
-    .like-count {
-      font-size: 12px;
     }
     .study_rank, .pc_rank {
       margin: 10px 0;
