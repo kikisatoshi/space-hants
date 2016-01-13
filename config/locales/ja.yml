@@ -232,6 +232,8 @@ ja:
         password_confirmation: 再入力パスワード
         current_password: 現在のパスワード
         remember_me: ログインを保存
+        avatar: プロフィール画像
+        remove_avatar: 画像を削除
       space:
         title: 名称
         address: 住所
@@ -288,6 +290,12 @@ ja:
       delete: 削除
       study_evaluation: 勉強スペース
       pc_evaluation: ＰＣスペース
+      space: スペースの詳細
+  users:
+    profile:
+      space: ハントしたスペース
+      review: レビュー
+      favorite: お気に入りスペース
   layouts:
     header:
       sign_up: 新規登録

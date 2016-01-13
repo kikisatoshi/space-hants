@@ -21,7 +21,7 @@ class HantsController < ApplicationController
   def destroy
     @hant.destroy
     flash[:success] = t('js.review_deleted', default: 'Review was deleted.')
-    redirect_to @hant.space
+    redirect_to request.referrer || root_url
   end
 
   private

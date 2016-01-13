@@ -4,7 +4,7 @@
       <img src="<%= asset_path "#{space.category}.png" %>" class="category-logo" />
     </span>
     <h3 class="spacebox-detail-title">
-      <%= link_to space.title, space, :style=>"color:black;" %>
+      <%= link_to space.title, space, :style => "color:black;" %>
     </h3>
     <div class="spacebox-inner">
       <div class="form-group">
@@ -18,7 +18,8 @@
         <span id="<%= space.id %>_pc_hint" class="hint"></span>
       </div>
       <div class="form-group">
-        <span id="hant-count"><%= hants.count %><%= t('.reviews', default: "reviews") %></span>
+        <span id="hant-count"><%= pluralize(space.hants.count, t('.review', default: "review")) %></span>
+        <%= render 'spaces/ownerforms/favorite_count', space: space %>
       </div>
       <div class="submit-group">
         <%= link_to t('js.detail', default: "Watch the details"), space,
@@ -31,10 +32,10 @@
 <script>
 $('#<%= space.id %>_study_rank').raty({
     size      : 24,
-    score     : <%= if hants.blank?
+    score     : <%= if space.hants.blank?
                      0
                     else
-                      hants.average(:study_evaluation).round(1)
+                      space.hants.average(:study_evaluation).round(1)
                     end %>,
     starOff   : '<%= asset_path "star-off.png" %>',
     starOn    : '<%= asset_path "star-on.png" %>',
@@ -44,7 +45,7 @@ $('#<%= space.id %>_study_rank').raty({
     targetType: 'score',
     targetKeep: true,
     readOnly  : true,
-    noRatedMsg: "<%= if hants.blank?
+    noRatedMsg: "<%= if space.hants.blank?
                       t('js.not_yet', :default => "Not rated yet!")
                     else
                       0.0
@@ -52,10 +53,10 @@ $('#<%= space.id %>_study_rank').raty({
 });
 $('#<%= space.id %>_pc_rank').raty({
     size      : 24,
-    score     : <%= if hants.blank?
+    score     : <%= if space.hants.blank?
                       0
                     else
-                      hants.average(:pc_evaluation).round(1)
+                      space.hants.average(:pc_evaluation).round(1)
                     end %>,
     starOff   : '<%= asset_path "star-off.png" %>',
     starOn    : '<%= asset_path "star-on.png" %>',
@@ -65,7 +66,7 @@ $('#<%= space.id %>_pc_rank').raty({
     targetType: 'score',
     targetKeep: true,
     readOnly  : true,
-    noRatedMsg: "<%= if hants.blank?
+    noRatedMsg: "<%= if space.hants.blank?
                       t('js.not_yet', :default => "Not rated yet!")
                     else
                       0.0

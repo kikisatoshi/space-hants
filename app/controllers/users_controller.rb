@@ -7,7 +7,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @spaces = @user.spaces.order(created_at: :desc)
+    if params[:type] == "Favorite"
+      space_ids =  @user.favorites.order(created_at: :desc).pluck(:space_id)
+      @spaces = Array.new
+      space_ids.each do |space_id|
+        @spaces << Space.find(space_id)
+      end
+      @spaces = Kaminari.paginate_array(@spaces).page(params[:page])
+    elsif params[:type] == "Review"
+      @hants = @user.hants.order(created_at: :desc).page(params[:page])
+    else
+      @spaces = @user.spaces.order(created_at: :desc).page(params[:page])
+    end
   end
 
   private

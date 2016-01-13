@@ -44,10 +44,15 @@
       </span>
       <% if current_user == hant.user %>
         <span class="delete-hant">
-            <%= link_to t('.delete'), hant, method: :delete,
-                data: { confirm: t('js.sure', default: 'Are you sure?') } %>
+          <%= link_to t('.delete'), hant, method: :delete,
+              data: { confirm: t('js.sure', default: 'Are you sure?') } %>
         </span>
-        <% end %>
+      <% end %>
+      <% if request.path.include?('/users/') %>
+        <span class="space-link">
+          <%= link_to t('.space'), hant.space, class: 'btn btn-success btn-xs' %>
+        </span>
+      <% end %>
     </div>
   </div>
 </div>

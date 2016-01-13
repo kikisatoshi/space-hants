@@ -20,10 +20,6 @@ class SpacesController < ApplicationController
       marker.title space.title
       marker.json({title: space.title})
     end
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def list

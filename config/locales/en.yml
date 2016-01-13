@@ -224,6 +224,8 @@ en:
         password_confirmation: Password Confirmation
         current_password: Current Password
         remember_me: Remember me
+        avatar: Image
+        remove_avatar: Remove my image
       space:
         title: Title
         address: Address
@@ -236,7 +238,7 @@ en:
         pc_evaluation: Rating for PC
   spaces:
     new:
-      map_title: Let's move a green pin and hant your space!
+      map_title: Let's move a green pin and hant my space!
     space_form:
       space_form: Space Information
       title: Title(Required)
@@ -280,6 +282,12 @@ en:
       delete: Delete
       study_evaluation: Study Rating
       pc_evaluation: PC Rating
+      space: Space
+  users:
+    profile:
+      space: HANTED SPACE
+      review: REVIEWS
+      favorite: FAVORITE SPACE
   layouts:
     header:
       sign_up: Sign up

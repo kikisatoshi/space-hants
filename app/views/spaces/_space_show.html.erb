@@ -23,21 +23,16 @@
     </div>
     <div class="form-group">
       <strong><%= t(".hanter", default: 'Space Hanter') %></strong>
-      <% if space.user.present? %>
         <span class="gravatar">
           <%= link_to gravatar_for(space.user, size: 30), space.user %>
         </span>
         <span class="profile">
-            <%= space.user.name[0, 15] %><% if space.user.name.length > 15 %>...<% end %>
-        </span>
-      <% else %>
-        <span class="gravatar">
-          <%= link_to gravatar_default_for(size: 30) %>
-        </span>
-        <span class="profile">
+        <% if space.user.present? %>
+          <%= space.user.name[0, 15] %><% if space.user.name.length > 15 %>...<% end %>
+        <% else %>
           <%= t('.not_exist', default: "User does not exist.") %>
-        </span>
-      <% end %>
+        <% end %>
+      </span>
     </div>
     <div class="form-group timestamp">
       <%= t('.at', default: "Updated at ") %><%= l space.updated_at %><%= t('.updated', default: "") %>

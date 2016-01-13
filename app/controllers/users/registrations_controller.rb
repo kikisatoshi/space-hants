@@ -48,8 +48,8 @@ before_action :configure_account_update_params, only: [:update]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << [:name, :email,
-      :password, :password_confirmation, :current_password, :hometown, :profile]
+    devise_parameter_sanitizer.for(:account_update) << [:name, :email, :password,
+      :password_confirmation, :current_password, :hometown, :profile, :avatar,:avatar_cache, :remove_avatar]
   end
 
   # The path used after sign up.

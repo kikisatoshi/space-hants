@@ -1,0 +1,9 @@
+<% if params[:type] == "Review" %>
+  $("#spaces").html("<%= escape_javascript(render @hants) %>");
+  $("#spaces-paginate-top").html("<%= escape_javascript(render 'hants/paginate', hants: @hants) %>");
+  $("#spaces-paginate-bottom").html("<%= escape_javascript(render 'hants/paginate', hants: @hants) %>");
+<% else %>
+  $("#spaces").html("<%= escape_javascript(render @spaces) %>");
+  $("#spaces-paginate-top").html("<%= escape_javascript(render 'spaces/paginate', spaces: @spaces) %>");
+  $("#spaces-paginate-bottom").html("<%= escape_javascript(render 'spaces/paginate', spaces: @spaces) %>");
+<% end %>

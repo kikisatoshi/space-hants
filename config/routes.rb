@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /ja|en/ do
     root 'welcome#index'
+    get  'ranking/cafe'
+    get  'ranking/library'
+    get  'ranking/original'
+    get  'ranking/users'
     devise_for :users, :controllers => {
       :registrations => 'users/registrations'
     }

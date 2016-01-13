@@ -21,20 +21,26 @@
   <div class="status">
     <ul>
       <li>
-        <div class="status-label">HANT</div>
-        <div class="status-value">
+        <div class="status-label">
+          <%= link_to t('.space'), user, remote: true, style: "color:#777;" %>
+        </div>
+        <div id="space_count" class="status-value">
           <%= user.spaces.count %>
         </div>
       </li>
       <li>
-        <div class="status-label">REVIEW</div>
-        <div id="followers" class="status-value">
+        <div class="status-label">
+          <%= link_to t('.review'), user_url(user, type: "Review"), remote: true, style: "color:#777;" %>
+        </div>
+        <div id="hant_count" class="status-value">
           <%= user.hants.count %>
         </div>
       </li>
       <li>
-        <div class="status-label">FAVORITE</div>
-        <div id="want_count" class="status-value">
+        <div class="status-label">
+          <%= link_to t('.favorite'), user_url(user, type: "Favorite"), remote: true, style: "color:#777;" %>
+        </div>
+        <div id="favorite_count" class="status-value">
           <%= user.favorites.count %>
         </div>
       </li>

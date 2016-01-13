@@ -71,6 +71,10 @@
     }
     .gravatar {
       margin-left: 5px;
+      max-height: 30px;
+      img {
+        border-radius: 100%;
+      }
     }
     .btn-favorite {
       margin: auto;
@@ -81,10 +85,13 @@
       background-color: rgba(255, 183, 76, 0.8);
     }
     .review-btn {
+      width: 160px;
       margin-left: 0;
     }
     .edit-btn {
-      margin-left: 15px;
+      width: 160px;
+      margin-right: 0;
+      float: right;
     }
   }
 }

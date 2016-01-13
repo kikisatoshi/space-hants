@@ -37,8 +37,8 @@
       padding: 0;
       display: table;
       li {
-        width: 120px;
-        padding: 5px 0;
+        width: 140px;
+        padding: 5px 5px;
         border-right: 1px solid #ddd;
         display: table-cell;
         vertical-align: middle;
@@ -48,10 +48,11 @@
           border: none;
         }
         .status-label {
-          font-size: 12px;
+          font-size: 14px;
+          margin-bottom: 5px;
         }
         .status-value {
-          font-size: 18px;
+          font-size: 20px;
         }
       }
     }
@@ -75,6 +76,21 @@
   }
   .box-inner {
     padding: 20px;
+    .gravatar {
+      display: table;
+      width: 150px;
+      height: 150px;
+      margin: auto;
+      img {
+        border-radius: 100%;
+        border: 5px solid #fff;
+        box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+      }
+    }
+    #user_avatar, .checkbox {
+      margin: 15px auto;
+      text-align: center;
+    }
     textarea {
       max-height: 150px;
     }

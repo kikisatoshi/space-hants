@@ -1,10 +1,8 @@
 <% content_for :head do %>
-  <title><%= @user.name %> - SpaceHants</title>
-  <meta name="description" content="<%= @user.name %>のページ。<%= @user.name %>のプロフィールとハントしたスペース一覧を表示しています。">
-  <meta name="keywords" content="SpaceHants,<%= @user.name %>">
+  <title>カフェランキング - SpaceHants</title>
+  <meta name="description" content="カフェランキングのページ。カフェカテゴリーのスペースをランキングで表示しています。">
+  <meta name="keywords" content="SpaceHants,Cafe,Ranking">
 <% end %>
-
-<%= render 'profile' , user: @user %>
 
 <div class="container">
   <div class="paginate-group" id="spaces-paginate-top">
