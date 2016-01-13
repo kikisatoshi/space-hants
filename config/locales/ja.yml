@@ -255,8 +255,8 @@ ja:
       original: オリジナルスペース（その他）
       hant_space: このスペースをハント
       hanting: "ハント中..."
-      edit: 編集
-      editing: "編集中..."
+      save: 保存
+      saving: "保存中..."
       delete: 削除
     show:
       map_title: スペースの地図表示
@@ -272,7 +272,7 @@ ja:
       review_form: レビューする
       edit_space: スペースを編集
       updated: ' 更新'
-    spaces_show:
+    space:
       study_evaluation: 勉強スペース評価
       pc_evaluation: パソコンスペース評価
       reviews: 件のレビュー

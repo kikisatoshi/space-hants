@@ -247,8 +247,8 @@ en:
       original: Original Space(Others)
       hant_space: Hant this space!
       hanting: "Hanting..."
-      edit: Edit
-      editing: "Editing..."
+      save: Save
+      saving: "Saving..."
       delete: Delete
     show:
       map_title: Space Display
@@ -264,7 +264,7 @@ en:
       review_form: Review Form
       edit_space: Edit Space
       updated: ''
-    spaces_show:
+    space:
       study_evaluation: Rating for Study
       pc_evaluation: Rating for PC
       reviews: Reviews

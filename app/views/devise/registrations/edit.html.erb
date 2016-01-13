@@ -19,7 +19,7 @@
         <%= f.file_field :avatar %>
         <%= f.hidden_field :avatar_cache %>
         <% if @user.persisted? && @user.avatar? %>
-          <div class="checkbox">
+          <div class="remove-checkbox">
             <label>
               <%= f.check_box :remove_avatar %><%= f.label :remove_avatar %>
             </label>

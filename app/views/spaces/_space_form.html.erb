@@ -36,12 +36,12 @@
       <% if request.path.include?('/spaces/new') || request.path==('/spaces') || request.path==('/en/spaces') || request.path==('/ja/spaces') %>
         <div class="submit-group">
           <%= f.submit t('.hant_space', :default => "Create"), 
-              class: "btn btn-success", data: { disable_with: t('.hanting', :default => "Now Hanting...")} %>
+              class: "btn btn-success", data: { disable_with: t('.hanting', :default => "Hanting...")} %>
         </div>
       <% else %>
         <div class="submit-group">
-          <%= f.submit t('.edit', :default => "Edit"), 
-              class: "btn btn-success", data: { disable_with: t('.editing', :default => "Now Editing...")} %>
+          <%= f.submit t('.save'), 
+              class: "btn btn-success", data: { disable_with: t('.saving', :default => "Saving...")} %>
           <%= link_to t('.delete', :default => "Delete"), @space, method: :delete,
               data: { confirm: t('js.sure', default: 'Are you sure?') }, id: "delete_link" %>
         </div>

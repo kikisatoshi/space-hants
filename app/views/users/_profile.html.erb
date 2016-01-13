@@ -1,7 +1,11 @@
 <div class="user-profile">
   <div class="user-profile-box row">
     <div class="icon col-xs-2">
-      <%= gravatar_for user, size: 100 %>
+      <% if user==current_user %>
+        <%= link_to gravatar_for(user, size: 100), edit_user_registration_path %>
+      <% else %>
+        <%= gravatar_for user, size: 100 %>
+      <% end %>
     </div>
     <div class="profile-inner-box col-xs-10">
       <div class="name">
